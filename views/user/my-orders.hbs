@@ -1,0 +1,81 @@
+<<<<<<< HEAD
+  {{>user-header}}
+
+=======
+>>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
+ <div class="hero-wrap hero-bread" style="background-image: url('/images/bg_1.jpg');">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Cart</span></p>
+            <h1 class="mb-0 bread">My Orders</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{!-- End --}}
+
+<section class="ftco-section ftco-cart">
+		<p id="item"  class="text-danger text-center"></p>
+			<div class="container">
+				
+				<div class="row">
+    			<div class="col-md-12 ftco-animate">
+    				<div class="cart-list">
+	    				<table class="table">
+						    <thead class="thead-primary">
+						      <tr class="text-center">
+						        <th>&nbsp;</th>
+						        <th>Date</th>
+						        <th>Address</th>
+						        <th>Pincode</th>
+						        <th>Phone no.</th>
+						        <th>Net Amount</th>
+						        <th>Payment Method</th>
+						        <th>Status</th>
+						        <th>&nbsp;&nbsp;</th>
+						        
+						      </tr>
+						    </thead>
+						    <tbody>
+<<<<<<< HEAD
+						        {{#each orderInfo}}
+=======
+						        {{#each orders}}
+>>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
+                                
+						      <tr class="text-center">
+								
+						        <td class="order-remove"><a href="/remove-order/{{_id}}" onclick="return confirm('Are you sure you want to cancel this order?');"><span class="ion-ios-close"></span></a></td>
+						        {{!-- <td class="image-prod"><div class="img" style="background-image:url(/product-images/{{item}}.jpg);"></div></td> --}}
+						       
+						        {{!-- <td class="product-name">
+						        	<h3>hjbjbjb</h3>
+						        	<p>nm bbjbjnbknn</p>
+						        </td>
+						         --}}
+                                 <td>{{date}}</td>
+                                 <td>{{deliveryDetails.street}},{{deliveryDetails.town}},{{deliveryDetails.state}}</td>
+                                 <td>{{deliveryDetails.zip}}</td>
+                                 <td>{{deliveryDetails.phone}}</td>
+                                 <td>{{totalAmount.[0].total}}</td>
+                                 <td>{{paymentMethod}}</td>
+<<<<<<< HEAD
+						         <td>{{status}}</td>
+=======
+						         <td>{{status}},{{_id}}</td>
+>>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
+						         <td><a href="/view-ordered-products/{{_id}}" class="btn btn-primary" style="height: 30px;">ViewProducts</a></td>
+                                 {{!-- <td><button href="" class="btn btn-primary" role="button" style="background-color: rgb(190, 190, 190);font-size:medium;color:white">View Products</button></td> --}}
+						      </tr>
+                               {{/each}}
+						    </tbody>
+						  </table>
+					  </div>
+    			</div>
+<<<<<<< HEAD
+    		</div>
+			{{>footer}}
+=======
+    		</div>
+>>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf

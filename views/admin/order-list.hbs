@@ -1,0 +1,50 @@
+<<<<<<< HEAD
+ {{>admin-header}}
+ 
+=======
+>>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
+ <div class="hero-wrap hero-bread" style="background-image: url('/images/bg_1.jpg');">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	{{!-- <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="index.html">Product</a></span> <span>Product Single</span></p> --}}
+            <h1 class="mb-0 bread">ORDER MANAGEMENT</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{!-- End --}}
+
+<table class="table mt-3">
+  <thead class="thead-dark">
+    <tr>
+      {{!-- <th scope="col">Sl No</th> --}}
+      <th scope="col">Username</th>
+      <th scope="col">location</th>
+      <th scope="col">Date</th>
+      <th scope="col">Total Amount</th>
+      <th scope="col">Payment Method</th>
+      <th scope="col">Status</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each orderList}}
+    <tr>
+      {{!-- <td>{{@index}}</td> --}}
+      
+      <td>{{deliveryDetails.name}}</td>
+      <td>{{deliveryDetails.street}},{{deliveryDetails.town}},{{deliveryDetails.state}}</td>
+    
+      <td>{{date}}</td>
+      <td>{{totalAmount.[0].total}}</td>
+      <td>{{paymentMethod}}</td>
+      <td>{{status}}</td>
+      <td><a href="/admin/order-details/{{_id}}" class="btn btn-primary">Details</a></td>
+      
+    </tr>
+    {{/each}}
+    </tbody>
+</table>

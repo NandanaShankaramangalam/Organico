@@ -1,0 +1,61 @@
+
+<section class="vh-100 bg-image" style="background-color: white;">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-4 ">
+              <h2 class="text-uppercase text-center mb-5">OTP LOGIN</h2>
+
+              <form method="post" action="/sent-otp">
+
+                <div class="form-outline mb-2">
+                  <label class="form-label" for="form3Example3cg">Email</label>
+                  <div class="d-flex">
+                  <input type="email" name="email" id="form3Example3cg" class="form-control form-control-lg" value="{{data.email}}" style="border-style:solid ; width: 380px; border-color:#82AE46"/>
+                  <button type="submit" class="btn btn-dark btn-lg mb-1 mt-2 ms-2" style="border-radius: 7px; height:40px; font-size:15px; background:#82AE46; border:none">Send OTP</button>
+                  </div>
+                  </div>
+
+                {{!-- <div class="form-outline mb-2">
+                  <label class="form-label" for="form3Example4cdg">Enter 6 digit OTP</label>
+                  <input type="text" name="otp" id="form3Example4cdg" class="form-control form-control-lg" style="border-style:solid ; border-color:#82AE46"/> 
+                </div> --}}
+               
+                <div>
+                  <p class="text-danger">{{err}}</p>
+                </div>
+                
+                
+                {{!-- <div class="d-flex justify-content-center">
+                
+            <button type="submit" class="btn btn-dark btn-lg mb-1 mt-4" style="border-radius: 7px; height:40px; font-size:15px; background:#82AE46; border:none">Login</button>
+                </div> --}}
+                 
+                <p class="text-center text-muted mt-4 mb-0">New Member? <a href="/user-signup"
+                   style="text-decoration: none;">Register here</a></p>
+
+              </form>
+              <form action="/otp-login" method="post">
+                <div class="form-outline mb-2 mt-3">
+                  <label class="form-label" for="form3Example4cdg">Enter 6 digit OTP</label>
+                  <input type="text" name="otp" id="form3Example4cdg" class="form-control form-control-lg" style="border-style:solid ; border-color:#82AE46"/> 
+                </div>
+                
+                <div>
+                  <p class="text-danger">{{invalid}}</p>
+                </div>
+                 <div class="d-flex justify-content-center">
+                
+            <button type="submit" class="btn btn-dark btn-lg mb-1 mt-4" style="border-radius: 7px; height:40px; font-size:15px; background:#82AE46; border:none">Login</button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,105 @@
+<<<<<<< HEAD
+ {{>user-header}}
+
+=======
+>>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
+ <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Products</span></p>
+            <h1 class="mb-0 bread">User Profile</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{!-- Start --}}
+    <div class="col-lg-12 mt-3 mb-3" style="height: 55vh;">
+      <div class="row">
+      <div class="col-md-3 col-sm-6" style="height: 55vh;border: 1px solid black;">
+       {{!-- <i class="fa-solid fa-square-user"></i> --}}
+       <div class="pt-3" style="display: flex;
+           justify-content: center;
+           align-items: center;">
+         <i class="fa-solid fa-user" style="font-size: xx-large;"></i>      
+       </div>
+<<<<<<< HEAD
+       <h6 class="text-center pt-1">{{users.name}}</h6>
+       <hr>
+      <div class="ms-4">
+        <p>Personal information</p>
+        <p><a href="/view-address-book" style="text-decoration: none;color: black;">Address Book</a></p>
+=======
+       <h6 class="text-center pt-1">{{user.name}}</h6>
+       <hr>
+      <div class="ms-4">
+        <p>Personal information</p>
+        <p><a href="/address-book" style="text-decoration: none;color: black;">Address Book</a></p>
+>>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
+        <p><a href="/my-orders" style="text-decoration: none;color: black;">My Orders</a></p>
+        <p>Wish List</p>
+      </div>
+      <hr>
+      <div class="ms-4">
+         <p><a href="/change-password/{{userId}}" style="text-decoration: none;color: black;">Change Password</a></p>
+      </div>
+      <hr>
+      <div class="ms-4 d-flex" style="padding-top: 4vh;">
+        <p><a href="/logout" style="text-decoration: none;color: black;">Logout</a></p>
+        <i class="fa-solid fa-right-from-bracket ms-2"></i>
+      </div>
+      </div>
+      <div class="col-md-8 col-sm-6 ms-3" style="border:1px solid black;height: 55vh;">
+        
+<<<<<<< HEAD
+  <form method="post" name="userProfile" onsubmit="return userProfileCheck()" action="/update-user-profile/{{userInfo._id}}">
+  <div class="form-group">
+    <h5 class="mt-4">Personal Details</h5>
+    <label for="exampleInputName">Name</label>
+    <input type="text" name="name" class="form-control" id="name" aria-describedby="name" value="{{userInfo.name}}" readonly="readonly">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail">Email address</label>
+    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" value="{{userInfo.email}}" readonly="readonly">
+=======
+  <form method="post" action="/update-user-profile/{{userInfo._id}}">
+  <div class="form-group">
+    <h5 class="mt-4">Personal Details</h5>
+    <label for="exampleInputName">Name</label>
+    <input type="text" name="name" class="form-control" id="exampleInputName" aria-describedby="name" value="{{userInfo.name}}" readonly="readonly">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail">Email address</label>
+    <input type="email" name="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" value="{{userInfo.email}}" readonly="readonly">
+>>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
+  </div>
+  {{!-- <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1">
+  </div> --}}
+  <a class="btn btn-primary mt-3" id="edit-Button" style="color: white;">Edit</a>
+  <button type="submit" class="btn btn-primary mt-3 ms-2">Update</button>
+</form>  
+      </div>
+       </div>
+    </div>
+<<<<<<< HEAD
+
+{{>footer}}
+
+    <script>
+      
+        document.getElementById('edit-Button').onclick = function() {
+        document.getElementById('name').readOnly = false;
+        document.getElementById('email').readOnly = false;
+=======
+    <script>
+      
+        document.getElementById('edit-Button').onclick = function() {
+        document.getElementById('exampleInputName').readOnly = false;
+        document.getElementById('exampleInputEmail').readOnly = false;
+>>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
+};
+      
+    </script>

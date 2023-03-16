@@ -1,0 +1,58 @@
+<<<<<<< HEAD
+ {{>user-header}} 
+=======
+>>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
+  <div class="hero-wrap hero-bread" style="background-image: url('/images/bg_1.jpg');">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Cart</span></p>
+            <h1 class="mb-0 bread">View Ordered Products</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{!-- End --}}
+
+
+
+
+<div class="container mt-5 mb-5">
+<div class=" row  ">
+
+    {{#each orderItems}}
+<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+<div class="card mt-3 mb-3" style="width: 15rem;">
+   <img src="/product-images/{{productDetails._id}}.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-text text-center"><b>{{productDetails.name}}</b></h5>
+    <h6 class="card-text text-center" style="color: grey;">{{productDetails.brand}}</h6>
+    <h6 class="card-text text-center">Qty:{{quantity}}</h6>
+    <h6 class="card-text text-center fw-bold">Rs.{{productDetails.price}}</h6>
+  </div> 
+  </div>
+  </div>
+    {{/each}}
+    </div>
+    </div>
+<<<<<<< HEAD
+    {{>footer}}
+=======
+    
+>>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
+  {{!-- {{#each orderItems}}
+  <div class="card mt-3 mb-3" style="width: 18rem;">
+  <img src="/product-images/{{productDetails._id}}.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-text text-center"><b>{{productDetails.name}}</b></h5>
+    <h6 class="card-text text-center" style="color: grey;">{{productDetails.brand}}</h6>
+    <h6 class="card-text text-center">Qty:{{quantity}}</h6>
+    <h6 class="card-text text-center fw-bold">Rs.{{productDetails.price}}</h6>
+  </div>
+  </div>
+  {{/each}} --}}
+
+
+
+

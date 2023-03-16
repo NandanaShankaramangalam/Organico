@@ -1,0 +1,78 @@
+body {
+  overflow-x: hidden;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.admin-nav{
+  display: flex;
+}
+
+.admin-nav li {
+  list-style: none;
+  padding-left: 10px;
+}
+
+.admin-nav li a {
+  text-decoration: none;
+}
+a{
+  text-decoration: none;
+}
+
+nav{
+  background-color: #82AE46;
+}
+.shop-hvr{
+  color: black;
+}
+.shop-hvr:active{
+  color: black;
+}
+.shop-hvr::after{
+  color: black;
+}
+
+<<<<<<< HEAD
+.search{
+  background-color: #82AE46;
+}
+/* input.search{    
+  background: url("http://kodyrabatowe.wp.pl/img/ico/search_gr.png") top left     no-repeat;
+  height:30px;
+  padding-left:25px;   
+  } */
+
+  .input-icons i {
+    position: relative;
+    left: 158px;
+}
+  
+.input-icons {
+    margin-bottom: 10px;
+}
+  
+.icon {
+    padding: 10px;
+    min-width: 40px;
+}
+  
+.input-field {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+.search-div{
+  width: 20vw;
+  max-height: 30vh;
+  overflow-y: scroll;
+  position: absolute;
+  z-index: 1;
+  left: 11%;
+  background-color: white;
+}
+=======
+>>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf

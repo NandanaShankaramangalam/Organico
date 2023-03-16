@@ -1,0 +1,106 @@
+<<<<<<< HEAD
+ {{>user-header}}
+=======
+
+>>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
+
+    <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Products</span></p>
+            <h1 class="mb-0 bread">Products</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section">
+    	<div class="container">
+    		<div class="row justify-content-center">
+    			<div class="col-md-10 mb-5 text-center">
+    				<ul class="product-category">
+    					<li><a href="#" class="active">All</a></li>
+    					<li><a href="#">Vegetables</a></li>
+    					<li><a href="#">Fruits</a></li>
+    					<li><a href="#">Juice</a></li>
+    					<li><a href="#">Dried</a></li>
+              <li class=" float-end mb-5" style="position: relative;bottom: 10px;"><div class="dropdown">
+  <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+    Filter
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <button class="dropdown-item" type="button" id="less-than-100" onclick="filter(this.id)">less than 100</button>
+    <button class="dropdown-item" type="button" id="btw-100-and-300" onclick="filter(this.id)">between 100 and 300</button>
+    <button class="dropdown-item" type="button" id="above-300" onclick="filter(this.id)">more than 300</button>
+    <button class="dropdown-item" type="button" id="all" onclick="filter(this.id)">all ranges</button>
+  </div>
+</div></li>
+    				</ul>
+    			</div>
+    		</div>
+            
+    		<div class="row">
+                {{#each products}}
+                <div class="col-md-6 col-lg-3 ftco-animate ">
+                    <div class="product border pb-1" >
+                        <a href="/single-product/{{_id}}" class="img-prod"><img class="img-fluid" src="/product-images/{{_id}}.jpg" alt="Colorlib Template">
+                            <span class="status">30%</span>
+                            <div class="overlay"></div>
+                        </a>
+                        <div class="text py-3 pb-4 px-3 text-center ">
+                            <h3><a href="#" class="">{{name}}</a></h3>
+                            <div class="d-flex">
+                                <div class="pricing">
+                                    <p class="price"><span class="mr-2 price-dc">Rs.250</span><span class="price-sale">Rs.{{price}}</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="bottom-area d-flex px-3 pb-3" style="top: 35px;">
+                                <div class="m-auto d-flex">
+                                    <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                                        <span><i class="ion-ios-menu"></i></span>
+                                    </a>
+                                    <a href="/add-to-cart/{{_id}}" onclick="addToCart({{_id}})" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                        <span><i class="ion-ios-cart"></i></span>
+                                    </a>
+                                    <a href="#" class="heart d-flex justify-content-center align-items-center ">
+                                        <span><i class="ion-ios-heart"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+                 {{/each}}
+                 </div> 
+<<<<<<< HEAD
+    		<div>
+          <p class="text-secondary text-center mb-5">{{filterMsg}}</p>
+        </div>
+=======
+    		
+>>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
+    			
+    		<div class="row mt-5">
+          <div class="col text-center">
+            <div class="block-27">
+              <ul>
+                <li><a href="#">&lt;</a></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="#" >2</a></li>
+                <li><a href="#" >3</a></li>
+                <li><a href="#" >4</a></li>
+                <li><a href="#" >5</a></li>
+                <li><a href="#" >&gt;</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    	</div>
+    </section>
+<<<<<<< HEAD
+{{>footer}}
+=======
+>>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf

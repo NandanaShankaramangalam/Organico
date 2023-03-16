@@ -1,0 +1,77 @@
+	<div class="py-1" style="background-color: #82AE46;">
+    	<div class="container">
+    		<div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
+	    		<div class="col-lg-12 d-block">
+		    		<div class="row d-flex">
+		    			<div class="col-md pr-4 d-flex topper align-items-center">
+					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+						    <span class="text">+ 1235 2355 98</span>
+					    </div>
+					    <div class="col-md pr-4 d-flex topper align-items-center">
+					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
+						    <span class="text">organico@gmail.com</span>
+					    </div>
+					    <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
+						    <span class="text">3-5 Business days delivery &amp; Free Returns</span>
+					    </div>
+				    </div>
+			    </div>
+		    </div>
+		  </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar  ftco-navbar-light" style="background-color: #82AE46;" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" style="color: #82AE46;" href="index.html">ORGANICO</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+			<div class=" input-icons mt-2">
+				<i class="fa-solid fa-magnifying-glass"></i>
+				<input type="text" class="pt-2 pb-2 ps-1 search"  id="search-box" onkeyup="sendData(this)" placeholder="Search here..." style="border-radius: 50px;border: 1px solid grey;outline: none; background: url("http://kodyrabatowe.wp.pl/img/ico/search_gr.png") top left     no-repeat;
+                height:30px;">  
+			</div>
+			
+
+			</div> 
+			</div>
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+			  {{#if user}}
+	          <li class="nav-item dropdown">	
+              <a class="nav-link dropdown-toggle" href="/shop" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown04">
+              	<a class="dropdown-item" href="/shop">Shop</a>
+              	<a class="dropdown-item" href="wishlist.html">Wishlist</a>
+                <a class="dropdown-item" href="product-single.html">Single Product</a>
+                <a class="dropdown-item" href="cart.html">Cart</a>
+                <a class="dropdown-item" href="checkout.html">Checkout</a>
+              </div>
+			  {{else}}
+			<li class="nav-item"><a href="/shop" class="nav-link">Shop</a></li>
+			  {{/if}}
+            </li>
+	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+			  <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+			  {{#if user}}
+			  
+			  {{else}}
+			  <li class="nav-item"><a href="/user-login" class="nav-link">LOGIN</a></li>
+			  {{/if}}
+	          {{!-- <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>  --}}
+			  {{#if user}}
+	          <li class="nav-item cta cta-colored"><a href="/cart" class="nav-link"><span class="icon-shopping_cart"></span>[{{cartCount}}]</a></li>
+<<<<<<< HEAD
+              <div class="d-flex align-items-center justify-content-center me-3" onclick="window.location.href='/user-profile'">
+				<i class="fa-solid fa-user pe-2 pb-1"></i> {{user.name}}
+			  </div>
+=======
+              <li class="nav-item" style="margin-top: 20px"><a href="/user-profile" style="text-decoration: none;color: black;"><i class="fa-solid fa-user"></i> {{user.name}} {{total.username}}</a></li>
+>>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
+			  {{/if}}
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+	  <div class="ms-3 search-div" id="searchResults"></div>

@@ -1,0 +1,80 @@
+<<<<<<< HEAD
+{{>admin-header}}
+=======
+{{!-- 
+        <script src="https://kit.fontawesome.com/4544b2b530.js" crossorigin="anonymous"></script>
+		<div class="py-2" style="background-color: #82AE46;">
+		</div>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar  ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="index.html" style="color: #82AE46;">ORGANICO</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+	          <li class="nav-item"><a href="/admin/user-list" class="nav-link">Users</a></li>
+	          <li class="nav-item"><a href="/admin/product-list" class="nav-link">Products</a></li>
+	          <li class="nav-item"><a href="/admin/add-category" class="nav-link">Category</a></li>
+	          <li class="nav-item"><a href="contact.html" class="nav-link">Orders</a></li>
+	           <li class="nav-item"><a class="nav-link" href=""><i class="fa-solid fa-user"></i>  {{admin.email}}</li></a>
+
+	        </ul>
+	      </div>
+	    </div>
+	  </nav> --}}
+    <!-- END nav -->
+>>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
+
+    <div class="hero-wrap hero-bread" style="background-image: url('/images/bg_1.jpg');">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	{{!-- <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="index.html">Product</a></span> <span>Product Single</span></p> --}}
+            <h1 class="mb-0 bread">PRODUCT MANAGEMENT</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   
+
+{{!-- Table start --}}
+<div class="container ">
+  <a  class="mt-3 ms-2 mb-3 btn" href="/admin/add-product" style="background-color:#82AE46; border-radius:7px; color:white; float:right">Add Product</a>
+</div>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Sl No</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Brand</th>
+      <th scope="col">Category</th>
+      <th scope="col">Price</th>
+      <th scope="col">Stock (kg)</th>
+      <th scope="col">Description</th>
+      <th scope="col">Image</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each products}}
+    <tr>
+      <td>{{@index}}</td>
+      <td>{{name}}</td>
+      <td>{{brand}}</td>
+      <td>{{category}}</td>
+      <td>{{price}}</td>
+      <td>{{stock}}</td>
+      <td>{{description}}</td>
+      <td><img src="/product-images/{{Images.[0]}}.jpg" alt="" width="100px"></td>
+      <td><a class="btn btn-success" href="/admin/edit-product/{{_id}}">Edit</a>
+      <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete {{name}}?')" href="/admin/delete-product/{{_id}}">Delete</a></td>
+      {{!-- <td></td> --}}
+    </tr>
+    {{/each}}
+    </tbody>
+</table>
