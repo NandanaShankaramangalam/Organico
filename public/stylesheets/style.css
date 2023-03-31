@@ -36,7 +36,7 @@ nav{
   color: black;
 }
 
-<<<<<<< HEAD
+
 .search{
   background-color: #82AE46;
 }
@@ -71,8 +71,13 @@ nav{
   overflow-y: scroll;
   position: absolute;
   z-index: 1;
-  left: 11%;
+  left: 30%;
   background-color: white;
 }
-=======
->>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
+.search-box{
+  outline-style: none;
+  border-style: solid;
+  border-color: rgb(172, 172, 172);
+ 
+}
+

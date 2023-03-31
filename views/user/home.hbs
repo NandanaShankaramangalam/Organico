@@ -41,7 +41,7 @@
 
     <section id="home-section" class="hero">
 		  <div class="home-slider owl-carousel">
-	      <div class="slider-item" style="background-image: url(images/bg_1.jpg);">
+	      <div class="slider-item" style="background-image: url(banner-images/banner.jpg);">
 	      	<div class="overlay"></div>
 	        <div class="container">
 	          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -56,7 +56,7 @@
 	        </div>
 	      </div>
 
-	      <div class="slider-item" style="background-image: url(images/bg_2.jpg);">
+	      <div class="slider-item" style="background-image: url(banner-images/banner2.jpg);">
 	      	<div class="overlay"></div>
 	        <div class="container">
 	          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -134,7 +134,7 @@
 									<div class="text text-center">
 										<h2>Vegetables</h2>
 										<p>Protect the health of every home</p>
-										<p><a href="#" class="btn btn-primary">Shop now</a></p>
+										<p><a href="/shop" class="btn btn-primary">Shop now</a></p>
 									</div>
 								</div>
 							</div>
@@ -175,13 +175,13 @@
           <div class="col-md-12 heading-section text-center ftco-animate">
           	<span class="subheading">Featured Products</span>
             <h2 class="mb-4">Our Products</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+            <p>Tasty, healthy and fresh! Pick your  favorites to the cart. </p>
           </div>
         </div>   		
     	</div>
     	<div class="container">
     		<div class="row">
-    			<div class="col-md-6 col-lg-3 ftco-animate">
+    			{{!-- <div class="col-md-6 col-lg-3 ftco-animate">
     				<div class="product">
     					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-1.jpg" alt="Colorlib Template">
     						<span class="status">30%</span>
@@ -209,8 +209,58 @@
     						</div>
     					</div>
     				</div>
-    			</div>
-    			<div class="col-md-6 col-lg-3 ftco-animate">
+    			</div> --}}
+				{{!-- ghgghv --}}
+				{{#each products}}
+				{{#if status}}
+				 <div class="col-md-6 col-lg-3 ftco-animate ">
+                    <div class="product border pb-1" >
+                        <a href="/single-product/{{_id}}" class="img-prod"><img class="img-fluid" src="/product-images/{{Images.[0]}}.jpg" alt="Colorlib Template">
+                            {{!-- <span class="status">30%</span> --}}
+                             {{#if (eq stock 0)}}
+                            <span class="status">Out of stock</span>
+                            {{/if}}
+                            <div class="overlay"></div>
+                        </a>
+                        <div class="text py-3 pb-4 px-3 text-center ">
+                            <h3><a href="#" class="">{{name}}</a></h3>
+                            <div class="d-flex">
+                                <div class="pricing">
+                                    <p class="price"><span class="mr-2 price-dc">Rs.250</span><span class="price-sale">Rs.{{price}}</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="bottom-area d-flex px-3 pb-3" style="top: 35px;">
+                                <div class="m-auto d-flex">
+                                    <a href="/single-product/{{_id}}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                                        <span><i class="ion-ios-menu"></i></span>
+                                    </a>
+                                    {{#if (eq stock 0)}}
+                                    
+                                    {{else}}
+                                    <a href="/add-to-cart/{{_id}}" onclick="addToCart({{_id}})" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                        <span><i class="ion-ios-cart"></i></span>
+                                    </a>
+                                    {{/if}}
+                                    <a href="/wishlist/{{_id}}" class="heart d-flex justify-content-center align-items-center ">
+                                        <span><i class="ion-ios-heart"></i></span>
+                                    </a>
+                                    
+                                </div>  
+                                </div>
+                                </div>
+                                </div>
+                                {{!-- {{#if (eq stock 0)}}
+                                    <p class="text-danger">Out of stock!</p>
+                                {{/if}} --}}
+                           
+                        
+                    
+                   
+                </div>
+				{{/if}}
+				{{/each}}
+    			{{!-- <div class="col-md-6 col-lg-3 ftco-animate">
     				<div class="product">
     					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-2.jpg" alt="Colorlib Template">
     						<div class="overlay"></div>
@@ -237,8 +287,8 @@
     						</div>
     					</div>
     				</div>
-    			</div>
-    			<div class="col-md-6 col-lg-3 ftco-animate">
+    			</div> --}}
+    			{{!-- <div class="col-md-6 col-lg-3 ftco-animate">
     				<div class="product">
     					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-3.jpg" alt="Colorlib Template">
 	    					<div class="overlay"></div>
@@ -265,8 +315,8 @@
     						</div>
     					</div>
     				</div>
-    			</div>
-    			<div class="col-md-6 col-lg-3 ftco-animate">
+    			</div> --}}
+    			{{!-- <div class="col-md-6 col-lg-3 ftco-animate">
     				<div class="product">
     					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-4.jpg" alt="Colorlib Template">
     						<div class="overlay"></div>
@@ -293,9 +343,9 @@
     						</div>
     					</div>
     				</div>
-    			</div>
+    			</div> --}}
 
-
+{{!-- 
     			<div class="col-md-6 col-lg-3 ftco-animate">
     				<div class="product">
     					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-5.jpg" alt="Colorlib Template">
@@ -324,8 +374,8 @@
     						</div>
     					</div>
     				</div>
-    			</div>
-    			<div class="col-md-6 col-lg-3 ftco-animate">
+    			</div> --}}
+    			{{!-- <div class="col-md-6 col-lg-3 ftco-animate">
     				<div class="product">
     					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-6.jpg" alt="Colorlib Template">
     						<div class="overlay"></div>
@@ -352,8 +402,8 @@
     						</div>
     					</div>
     				</div>
-    			</div>
-    			<div class="col-md-6 col-lg-3 ftco-animate">
+    			</div> --}}
+    			{{!-- <div class="col-md-6 col-lg-3 ftco-animate">
     				<div class="product">
     					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-7.jpg" alt="Colorlib Template">
 	    					<div class="overlay"></div>
@@ -380,8 +430,8 @@
     						</div>
     					</div>
     				</div>
-    			</div>
-    			<div class="col-md-6 col-lg-3 ftco-animate">
+    			</div> --}}
+    			{{!-- <div class="col-md-6 col-lg-3 ftco-animate">
     				<div class="product">
     					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-8.jpg" alt="Colorlib Template">
     						<div class="overlay"></div>
@@ -408,7 +458,7 @@
     						</div>
     					</div>
     				</div>
-    			</div>
+    			</div> --}}
     		</div>
     	</div>
     </section>
@@ -434,9 +484,19 @@
     </section>
 	{{>footer}}
 
-<<<<<<< HEAD
+     {{#if loggedIn}}
+	 <script>
+		Swal.fire({
+		position: 'center',
+		icon: 'success',
+		title: 'Login Successful',
+		showConfirmButton: false,
+		timer: 1500
+		})
+	 </script>
+	 {{/if}}
     
-=======
+
     {{!-- <section class="ftco-section testimony-section">
       <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
@@ -666,4 +726,4 @@
     
   </body> --}}
 {{!-- </html> --}}
->>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
+

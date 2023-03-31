@@ -1,8 +1,8 @@
-<<<<<<< HEAD
+
   {{>user-header}}
 
-=======
->>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
+
+
  <div class="hero-wrap hero-bread" style="background-image: url('/images/bg_1.jpg');">
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -25,28 +25,27 @@
 	    				<table class="table">
 						    <thead class="thead-primary">
 						      <tr class="text-center">
-						        <th>&nbsp;</th>
+						        
 						        <th>Date</th>
 						        <th>Address</th>
 						        <th>Pincode</th>
 						        <th>Phone no.</th>
 						        <th>Net Amount</th>
 						        <th>Payment Method</th>
-						        <th>Status</th>
+						        <th>Order Status</th>
+						        <th>Payment Status</th>
 						        <th>&nbsp;&nbsp;</th>
+								<th>&nbsp;</th>
 						        
 						      </tr>
 						    </thead>
 						    <tbody>
-<<<<<<< HEAD
+
 						        {{#each orderInfo}}
-=======
-						        {{#each orders}}
->>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
-                                
+   
 						      <tr class="text-center">
 								
-						        <td class="order-remove"><a href="/remove-order/{{_id}}" onclick="return confirm('Are you sure you want to cancel this order?');"><span class="ion-ios-close"></span></a></td>
+						       
 						        {{!-- <td class="image-prod"><div class="img" style="background-image:url(/product-images/{{item}}.jpg);"></div></td> --}}
 						       
 						        {{!-- <td class="product-name">
@@ -60,22 +59,35 @@
                                  <td>{{deliveryDetails.phone}}</td>
                                  <td>{{totalAmount.[0].total}}</td>
                                  <td>{{paymentMethod}}</td>
-<<<<<<< HEAD
-						         <td>{{status}}</td>
-=======
-						         <td>{{status}},{{_id}}</td>
->>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
+						         <td>{{#if (eq orderStatus 'order cancelled')}}<span class="text-danger">{{orderStatus}}</span>{{else}}{{orderStatus}}{{/if}}</td>
+						         <td>{{#if (eq paymentStatus 'Return')}}<span class="text-warning">{{paymentStatus}}</span>{{else}}{{paymentStatus}}{{/if}}</td>
+
+                                 {{!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"></button> --}}
 						         <td><a href="/view-ordered-products/{{_id}}" class="btn btn-primary" style="height: 30px;">ViewProducts</a></td>
-                                 {{!-- <td><button href="" class="btn btn-primary" role="button" style="background-color: rgb(190, 190, 190);font-size:medium;color:white">View Products</button></td> --}}
+                                 {{!-- <td class="product-remove"><a data-bs-toggle="modal" data-bs-target="#exampleModal" href="/remove-order/{{_id}}"><span class="ion-ios-close"></span></a></td> --}}
+								 {{!-- <td class="product-remove"><a href="/remove-product/{{productDetails._id}}" onclick="return confirm('Are you sure you wanna delete it')"><span class="ion-ios-close"></span></a></td> --}}
+								 {{!-- <td><button href="" class="btn btn-primary" role="button" style="background-color: rgb(190, 190, 190);font-size:medium;color:white">View Products</button></td> --}}
 						      </tr>
-                               {{/each}}
+                            
+							   {{/each}}
 						    </tbody>
 						  </table>
 					  </div>
     			</div>
-<<<<<<< HEAD
+
     		</div>
 			{{>footer}}
-=======
+
     		</div>
->>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
+
+
+		{{!-- modal --}}
+		<!-- Button trigger modal -->
+
+{{!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button> --}}
+
+
+
+

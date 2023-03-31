@@ -1,0 +1,107 @@
+{{>admin-header}}
+<link rel="stylesheet" href="/stylesheets/dashboard.css">
+<div class="container mt-3">
+    <div class="" >
+       
+           <button class="btn btn-primary btn-sm my-3"  onclick="ExportToExcel()">Download Excel</button>
+           <button class="btn btn-primary btn-sm my-3"  onclick="printTable()">Download PDF</button> 
+        
+      
+    </div>
+  <div class="row">
+    <table class="table sales-report" id="sales-report">
+    <thead class="table-dark">
+        <tr>
+            {{!-- <th>Date</th> --}}
+            <th>Username</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each report}}
+        {{#each products}}
+        <tr>
+            {{!-- <td>{{../date}}</td> --}}
+            <td>{{../deliveryDetails.name}}</td>
+            <td>{{productDetails.name}}</td>
+            <td>{{quantity}}</td>
+            <td>{{productDetails.price}}</td>
+            {{!-- <td>{{mul productDetails.price quantity}}</td>     --}}
+            <td>{{../totalAmount.[0].total}}</td>    
+        </tr>
+        {{/each}}
+        {{/each}}
+    </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+ {{!-- <table class="table sales-report" id="sales-report">
+    <thead class="table-dark">
+        <tr>
+            <th>Sl.No</th>
+            <th>Username</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+    </thead> --}}
+    {{!-- <tbody>
+        {{#each report}}
+        <tr>
+            <td>{{@index}}</td>
+            <td>{{deliveryDetails.name}}</td>
+            
+            <td>
+                <ul>
+                {{#each products}}
+                <li style="list-style: none;">{{productDetails.name}}</li><br>
+                {{/each}}
+                </ul>
+            </td>
+            <td>
+                <ul>
+                {{#each products}}
+                <li style="list-style: none;">{{quantity}}</li><br>
+                {{/each}}
+                </ul>
+            </td>
+            <td>
+                <ul>
+                {{#each products}}
+                <li style="list-style: none;">{{productDetails.price}}</li><br>
+                {{/each}}
+                </ul>
+            </td>
+            
+            <td>{{totalAmount.[0].total}}</td>    
+        </tr>
+        {{/each}}
+    </tbody>
+    </table> --}}
+<script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+
+<script>
+    function ExportToExcel(type, fn, dl) {
+    var elt = document.getElementById("sales-report");
+    var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+    return dl ?
+        XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }) :
+        XLSX.writeFile(wb, fn || ('MySheetName.' + (type || 'xlsx')));
+}
+
+function printTable() {
+    var table = document.getElementById("sales-report");
+    var newWin = window.open('', 'Print-Window');
+    newWin.document.open();
+    newWin.document.write('<html><body onload="window.print()">' + table.outerHTML + '</html>');
+    newWin.document.close();
+    setTimeout(function () { newWin.close(); }, 10);
+  }
+</script>

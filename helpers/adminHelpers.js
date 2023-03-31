@@ -274,11 +274,7 @@ module.exports = {
         getOrderList : ()=>{
             return new Promise(async(resolve, reject) => {
                let orderList = await  orders.find().toArray();
-<<<<<<< HEAD
                resolve(orderList); 
-=======
-               resolve(orderList);
->>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
             })
         },
         getOrderDetails : (orderId)=>{

@@ -9,6 +9,7 @@ const userCollection = require('../model/userSchema');
 const product = require('../model/productSchema');
 const cart = require('../model/cartSchema');
 const orders = require('../model/orderSchema');
+const coupon = require('../model/couponSchema');
 var bcrypt = require('bcrypt');
 var uuid = require('uuid');
 const nodemailer=require('nodemailer');
@@ -19,6 +20,7 @@ require('dotenv').config();
 // const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Types;
 const Razorpay = require('razorpay');
+
 
 var instance = new Razorpay({
   key_id: 'rzp_test_LXOpGrtoDyeDsU',
@@ -116,8 +118,8 @@ function getTotalAmount(userId) {
 }
 
 module.exports = {
-  addToCart: async (req, res) => {
-
+  addToCart: async (req, res,next) => {
+    try{
     let productId = req.params.id;
     let userId = req.session.user._id;
     let productObject = {
@@ -153,10 +155,16 @@ module.exports = {
         res.redirect('/cart');
       })
     }
+  }
+  catch(err){
+    next(err)
+  }
   },
-  getCartProducts: async (req, res) => {
+  getCartProducts: async (req, res,next) => {
+    try{
     let user=req.session.user;
     let userId = req.session.user._id;
+    let errCoupon = req.session.errCoupon;
     let cartItems = await cart.aggregate([
       {
         $match: { userId: ObjectId(userId) }
@@ -185,18 +193,47 @@ module.exports = {
       }
 
     ]).toArray();
-    let total = await getTotalAmount(req.session.user._id)
+    let total = await getTotalAmount(req.session.user._id);
+    subtotal = total;
+    console.log("Subtot=",subtotal);
     console.log("cart now =", cartItems);
-    res.render('user/cart', { cartItems, total, user });
+    if(user){ 
+      req.session.cartCount = await getCartCount(req.session.user._id);
+   }
+    let couponList = await coupon.find().toArray();
+    // console.log("clist=",couponList);
+    console.log("bb", req.session.discountAmount);
+     if(req.session.discountAmount){
+      discountAmount = req.session.discountAmount; 
+      console.log("vvvvv",total);
+      total[0].total = total[0].total - req.session.discountAmount;
+      console.log("tot",total[0].total);
+      req.session.total =  total[0].total;
+      subtotal = discountAmount +  total[0].total;
+      console.log("inn", subtotal);
+     }
+    //  look
+    res.render('user/cart', {cartItems,subtotal,total, user,cartCount:req.session.cartCount,couponList,errCoupon,discountAmount:req.session.discountAmount});
+    req.session.errCoupon = null;
+    req.session.discountAmount = null;
+    }
+    catch(err){
+      next(err)
+    }
   },
 
-  changeProductQuantity: async (req, res) => {
+  changeProductQuantity: async (req, res, next) => {
+    try{
     let response = {};
     let userId = req.session.user._id;
     let details = req.body;
+    // console.log("hyuu",req.body);
     details.count = parseInt(details.count);
     details.quantity = parseInt(details.quantity)
+
     console.log(details);
+    let stockDetails = await product.findOne({_id:ObjectId(details.product)});
+    console.log("stk details",stockDetails);
     if (details.count == -1 && details.quantity == 1) {
       cart.updateOne({ _id: ObjectId(details.cart) },
         {
@@ -206,6 +243,12 @@ module.exports = {
           let total = await getTotalAmount(userId);
           console.log("tootaal = ", total);
         })
+    }
+    else if(details.quantity >(stockDetails.stock - 1) && details.count ==1){
+        console.log("Out of stock");
+        req.session.stock = 'outOfStock';
+        response.stock = 'outOfStock';
+        res.json(response);
     }
     else {
       cart.updateOne({ _id: ObjectId(details.cart), 'products.item': ObjectId(details.product) },
@@ -218,21 +261,53 @@ module.exports = {
           res.json(response);
         })
     }
+  }
+  catch(err){
+    next(err)
+  }
   },
-  getPlaceOrder: async (req, res) => {
+  getPlaceOrder: async (req, res, next) => {
+    try{
     let user=req.session.user;
     let userId = req.session.user._id;
-    let total = await getTotalAmount(userId);
+    // let total;
+    total = await getTotalAmount(userId);
+    console.log("sessionamt",req.session.discountAmount);
+    // if(req.session.discountAmount){
+    //   total[0].total = req.session.discountPrice; 
+    // }
+    // else{
+    //   total = await getTotalAmount(userId);
+    //   total[0].total = totalPrice[0].total;
+    // }
+    // console.log("totttaalll",total);
+    if(req.session.total){
+      total[0].total = req.session.total;
+    }
+    
+    // total = req.session.total;
     selectedAddress = req.session.selectedAddress;
-    console.log("hiiiiii", selectedAddress);
-    res.render('user/checkout', { total, selectedAddress, user })
+    let userData = await userCollection.findOne({_id:ObjectId(userId)});
+    console.log("userrr",userData);
+    
+    res.render('user/checkout', { total, selectedAddress, user ,userData});
+  }
+  catch(err){
+    next(err)
+  }
   },
-  placeOrder: async (req,res) => {
+  placeOrder: async (req,res,next) => {
+    try{
     let userId = req.session.user._id;
     console.log("hjgg",userId);
     let order = req.body;
     let products = await getCartProducts(userId);
     total = await getTotalAmount(userId);
+    if(req.session.total){
+      total[0].total = req.session.total;
+    }
+    
+    console.log("uu",total[0].total);
     const date = new Date();
     const options = {
       year: 'numeric',
@@ -247,6 +322,8 @@ module.exports = {
     const orderDate = formattedDate;
     // console.log("sudgfsdfsfds", order);
     let status = order['payment-method'] === 'COD' ? 'placed' : 'pending';
+    let paymentStatus = order['payment-method'] === 'COD' ? 'not paid' : 'paid';
+    
     // let usersId = userId
     let uid=uuid.v4()
     let orderObj = {
@@ -262,12 +339,29 @@ module.exports = {
       },
       userId: userId,
       paymentMethod: order['payment-method'],
+      paymentStatus : paymentStatus,
       products: products,
       totalAmount: total,
       status: status,
       orderStatus : 'order placed',
-      date: orderDate
+      date: orderDate,
+      month : date.getMonth()+1,
     }
+
+  //   if(order['payment-method'] == 'wallet'){
+  //     status = 'placed';
+  //     paymentStatus = 'paid';
+  //       orders.insertOne(orderObj).then((response) => {
+  //         let amount = -(parseFloat(orderObj.totalAmount));
+  //       userCollection.updateOne({_id:ObjectId(userId)},{$inc:{wallet:amount}}).then()  
+  //       cart.deleteOne({ userId: ObjectId(userId) }).then(()=>{
+  //         let oid = response.insertedId;
+  //         req.session.orderId = response.insertedId;
+  //         res.json({cod:true})
+  //       })
+  //     })
+      
+  //  }
 
     let productCount = products.length;
     for (i = 0; i < productCount; i++) {
@@ -284,15 +378,25 @@ module.exports = {
       userCollection.updateOne({ _id: ObjectId(userId) }, { $push: { address: orderObj.deliveryDetails } });
 
     }
+    console.log(orderObj);
     orders.insertOne(orderObj).then((response) => {
       cart.deleteOne({ userId: ObjectId(userId) }).then(()=>{
+        // let oid = response.insertedId;
         let oid = response.insertedId;
+        req.session.orderId = response.insertedId;
         if(req.body['payment-method'] == 'COD'){
-          res.json({cod:true})
+          res.json({cod:true});
+        }
+        else if(req.body['payment-method'] == 'wallet'){
+          console.log("frrrr",orderObj.totalAmount[0].total);
+          let amount = -(parseFloat(orderObj.totalAmount[0].total));
+          userCollection.updateOne({_id:ObjectId(userId)},{$inc:{wallet:amount}});
+          res.json({cod:true});
         }
         else{
           console.log("here total ",total);
           let totalAmt= total[0].total
+           
           var options = {
             amount: totalAmt*100,  // amount in the smallest currency unit
             currency: "INR",
@@ -316,12 +420,26 @@ module.exports = {
       //  resolve();
       // res.json({status : true});
     })
+  }
+  catch(err){
+    next(err)
+  }
   },
-  orderPlaced: async (req, res) => {
+  orderPlaced: async (req, res, next) => {
+    try{
     let user=req.session.user;
-    res.render('user/order-placed',{user});
+    let orderId = req.session.orderId;
+    console.log("oiddd",orderId);
+    if(req.session.orderId){
+       res.render('user/order-placed',{user,orderId,cartCount:req.session.cartCount});
+    }
+  }
+  catch(err){
+    next(err)
+  }
   },
- verifyPayment : async(req,res)=>{
+ verifyPayment : async(req,res,next)=>{
+  try{
   console.log("body",req.body);
    let details = req.body;
    let orderId = req.body['order[receipt]'];
@@ -337,11 +455,100 @@ module.exports = {
        {$set : { status: 'placed' }}
      )
     console.log('Payment successful');
+    // First payment
+    
+
     res.json({status : true});
    }
    else{
     res.json({status : false});
    }
+  }
+  catch(err){
+    next(err)
+  }
  },
+ applyCoupon : async(req,res,next)=>{
+  try{
+  let response = {};
+  let couponCode = req.body.couponCode;
+  let total = await getTotalAmount(req.session.user._id);
+  let discountAmount;
+  let cartCount = req.session.cartCount;
+  console.log("cccddd",couponCode);
+  console.log("cccddd",total);
+  // let cartData = await cart.find({userId:req.session.user._id}).toArray();
+  let couponData = await coupon.findOne({coupon:couponCode});
+  console.log("insideee",total[0].total,cartCount);
+  if(couponData?.discountType == "percentage"){
+    if(total[0].total >= couponData.minAmount && cartCount >= couponData.minItems){
+      console.log("inside",total[0].total,cartCount);
+      discountAmount = (total[0].total * couponData.discount)/100;
+    }
+  }
+  else if(total[0].total >= couponData.minAmount && cartCount >= couponData.minItems){
+    console.log("outside",total[0].total,cartCount);
+    discountAmount = couponData.discount;
+  }
+  else{
+    console.log("inout");
+    discountAmount = 0;
+  }
+  console.log("disss",discountAmount);
+  req.session.discountAmount = discountAmount;
+  console.log("cc", req.session.discountAmount);
+  console.log("ddddddd",couponData);
+  console.log("ccountt",cartCount);
+  if(total[0].total <= couponData.minAmount && cartCount <= couponData.minItems){
+    req.session.errCoupon = 'Not eligible for this coupon!';
+    console.log("mm",req.session.errCoupon);
+  }
+  console.log("errcoupon",req.session.coupon);
+  res.json(response);
+}
+catch(err){
+  next(err)
+}
+},
+invoice : async(req,res,next)=>{
+  try{
+  let orderId = req.session.orderId;
+  console.log("huhuhuhuhhuhu",orderId);
+  let orderData = await orders.findOne({_id:ObjectId(orderId)});
+  let orderItems = await order.aggregate([
+    {
+      $match : {_id:ObjectId(orderId)}
+    },
+    {
+      $unwind : '$products'
+    },
+    {
+      $project : {
+        item : '$products.item',
+        quantity : '$products.quantity'
+      }
+    },
+    {
+      $lookup : {
+        from : 'products',
+        localField : 'item',
+        foreignField : '_id',
+        as : 'productDetails'
+      }
+    },
+    {
+      $project : {
+        item : 1, quantity : 1, productDetails : {$arrayElemAt:['$productDetails',0]}
+      }
+    }
+   ]).toArray();
+  console.log("orderData = ",orderData);
+  console.log("orderItemsss = ",orderItems);
+  res.render('user/invoice',{orderData,orderItems});
+  }
+  catch(err){
+    next(err)
+  }
+},
  
 }

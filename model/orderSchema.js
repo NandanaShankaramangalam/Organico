@@ -32,6 +32,10 @@ const orderData = mongoose.Schema({
     orderStatus : {
         type : String,
         required : true
+    },
+    month : {
+        type : Number,
+        required : true
     }
    
 });

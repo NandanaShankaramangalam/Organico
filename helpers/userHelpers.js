@@ -345,11 +345,8 @@ module.exports = {
      placeOrder : (order,products,total,userId)=>{
        return new Promise(async (resolve, reject) => {
         console.log("sudgfsdfsfds",order);
-<<<<<<< HEAD
         console.log("sudgfsdfsfds",products);
 
-=======
->>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
         let status = order['payment-method'] === 'COD' ? 'placed' : 'pending';
         let usersId=userId
         let orderObj = {
@@ -539,7 +536,7 @@ module.exports = {
       let data = selectedAddress[0].address;
       let name = selectedAddress[0].address.name;
       let arr = name.split(' ');
-console.log(data);
+      console.log(data);
       let address = {
         fname : arr[0],
         lname : arr[1],

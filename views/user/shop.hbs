@@ -1,8 +1,8 @@
-<<<<<<< HEAD
- {{>user-header}}
-=======
 
->>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
+ {{>user-header}}
+
+
+
 
     <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
       <div class="container">
@@ -19,14 +19,73 @@
     	<div class="container">
     		<div class="row justify-content-center">
     			<div class="col-md-10 mb-5 text-center">
-    				<ul class="product-category">
+            <div class="container" >
+              {{!-- <button class="btn btn-primary " style="float: left;">Categories</button> --}}
+  <div class="dropdown" style="float: left;">
+  <a href="/category-all"><button class="btn btn-primary">All</button></a>
+  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+    Categories
+  </button>
+  
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    {{#each categories}}
+    <button class="dropdown-item" type="button" id="{{category}}" onclick="category(this.id)">{{category}}</button>
+    {{/each}}
+    {{!-- <button class="dropdown-item" type="button" id="all" onclick="category(this.id)">All</button> --}}
+    {{!-- <button class="dropdown-item" type="button" id="descending" onclick="sort(this.id)">price from high to low</button> --}}
+  </div>
+  
+</div>
+
+
+  <div class="dropdown" style="float: right;">
+  <button class="btn btn-primary  dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+ Sort
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <button class="dropdown-item" type="button" id="ascending" onclick="sort(this.id)">price from low to high</button>
+    <button class="dropdown-item" type="button" id="descending" onclick="sort(this.id)">price from high to low</button>
+  </div>
+</div>
+              {{!-- <button class="btn btn-primary " style="">Categories</button> --}}
+      <div class="dropdown" style="float: right;left: -10px;">
+      <button class="btn btn-primary  dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+       Filter
+      </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <button class="dropdown-item" type="button" id="less-than-100" onclick="filter(this.id)">less than 100</button>
+    <button class="dropdown-item" type="button" id="btw-100-and-300" onclick="filter(this.id)">between 100 and 300</button>
+    <button class="dropdown-item" type="button" id="above-300" onclick="filter(this.id)">more than 300</button>
+    <button class="dropdown-item" type="button" id="all" onclick="filter(this.id)">all ranges</button>
+  </div>
+</div> 
+              {{!-- <button class="btn btn-primary" style="float: right;left: 10px;">Categories</button> --}}
+              
+             
+            </div>
+
+
+             {{!-- <div class="dropdown">
+  <div class="dropdown">
+  <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+    Sort
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <button class="dropdown-item" type="button" id="ascending" onclick="sort(this.id)">price from low to high</button>
+    <button class="dropdown-item" type="button" id="descending" onclick="sort(this.id)">price from high to low</button>
+  </div>
+</div>
+</div> --}}
+    				{{!-- <ul class="product-category">
     					<li><a href="#" class="active">All</a></li>
     					<li><a href="#">Vegetables</a></li>
     					<li><a href="#">Fruits</a></li>
     					<li><a href="#">Juice</a></li>
     					<li><a href="#">Dried</a></li>
-              <li class=" float-end mb-5" style="position: relative;bottom: 10px;"><div class="dropdown">
-  <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+              <li class=" float-end mb-5" style="position: relative;bottom: 10px;">
+               --}}
+  {{!-- <div class="dropdown">
+  <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
     Filter
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -35,17 +94,57 @@
     <button class="dropdown-item" type="button" id="above-300" onclick="filter(this.id)">more than 300</button>
     <button class="dropdown-item" type="button" id="all" onclick="filter(this.id)">all ranges</button>
   </div>
-</div></li>
-    				</ul>
+</div> --}}
+{{!-- </li>
+
+  <li class=" float-end mb-5" style="position: relative;bottom: 10px;">
+  
+</li> --}}
+
+{{!-- cgfcc --}}
+  {{!-- <div class="dropdown">
+  <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+    Filter
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <button class="dropdown-item" type="button" id="less-than-100" onclick="filter(this.id)">less than 100</button>
+    <button class="dropdown-item" type="button" id="btw-100-and-300" onclick="filter(this.id)">between 100 and 300</button>
+    <button class="dropdown-item" type="button" id="above-300" onclick="filter(this.id)">more than 300</button>
+    <button class="dropdown-item" type="button" id="all" onclick="filter(this.id)">all ranges</button>
+  </div>
+
+  <div class="dropdown">
+  <div class="dropdown">
+  <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+    Sort
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <button class="dropdown-item" type="button" id="ascending" onclick="sort(this.id)">price from low to high</button>
+    <button class="dropdown-item" type="button" id="descending" onclick="sort(this.id)">price from high to low</button>
+  </div>
+</div>
+</div> --}}
+    				{{!-- </ul> --}}
+           
     			</div>
+          {{!-- cf --}}
+ 
     		</div>
+        {{!-- bjb --}}
+        
+           
+      
             
     		<div class="row">
                 {{#each products}}
+                {{#if status}}
                 <div class="col-md-6 col-lg-3 ftco-animate ">
                     <div class="product border pb-1" >
-                        <a href="/single-product/{{_id}}" class="img-prod"><img class="img-fluid" src="/product-images/{{_id}}.jpg" alt="Colorlib Template">
-                            <span class="status">30%</span>
+                        <a href="/single-product/{{_id}}" class="img-prod"><img class="img-fluid" src="/product-images/{{Images.[0]}}.jpg" alt="Colorlib Template">
+                            {{!-- <span class="status">30%</span> --}}
+                             {{#if (eq stock 0)}}
+                            <span class="status">Out of stock</span>
+                            {{/if}}
                             <div class="overlay"></div>
                         </a>
                         <div class="text py-3 pb-4 px-3 text-center ">
@@ -58,49 +157,83 @@
                             </div>
                             <div class="bottom-area d-flex px-3 pb-3" style="top: 35px;">
                                 <div class="m-auto d-flex">
-                                    <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                                    <a href="/single-product/{{_id}}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                         <span><i class="ion-ios-menu"></i></span>
                                     </a>
+                                    {{#if (eq stock 0)}}
+                                    
+                                    {{else}}
                                     <a href="/add-to-cart/{{_id}}" onclick="addToCart({{_id}})" class="buy-now d-flex justify-content-center align-items-center mx-1">
                                         <span><i class="ion-ios-cart"></i></span>
                                     </a>
-                                    <a href="#" class="heart d-flex justify-content-center align-items-center ">
+                                    {{/if}}
+                                    <a href="/wishlist/{{_id}}" class="heart d-flex justify-content-center align-items-center ">
                                         <span><i class="ion-ios-heart"></i></span>
                                     </a>
+                                    
+                                </div>  
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                                </div>
+                                </div>
+                                {{!-- {{#if (eq stock 0)}}
+                                    <p class="text-danger">Out of stock!</p>
+                                {{/if}} --}}
+                           
+                        
+                    
                    
                 </div>
+                {{/if}}
                  {{/each}}
                  </div> 
-<<<<<<< HEAD
+
     		<div>
           <p class="text-secondary text-center mb-5">{{filterMsg}}</p>
         </div>
-=======
+
     		
->>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
+
     			
     		<div class="row mt-5">
           <div class="col text-center">
             <div class="block-27">
+              {{!-- <nav aria-label="...">
+              <ul class="pagination pagination-lg">
+                <li class="page-item active" aria-current="page">
+                  <span class="page-link">1</span>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+              </ul>
+            </nav> --}}
               <ul>
-                <li><a href="#">&lt;</a></li>
-                <li class="active"><span>1</span></li>
-                <li><a href="#" >2</a></li>
+                {{!-- <li><a href="#">&lt;</a></li> --}}
+                {{!-- <li class="active"><span>1</span></li> --}}
+                {{#each pageArr}}
+                <li {{#if (eq ../pageno [])}}class="active"{{/if}}><a href="/pagination/{{[]}}">{{[]}}</a></li>
+                {{/each}}
+                {{!-- <li><a href="#" >2</a></li>
                 <li><a href="#" >3</a></li>
-                <li><a href="#" >4</a></li>
-                <li><a href="#" >5</a></li>
-                <li><a href="#" >&gt;</a></li>
+                <li><a href="#" >4</a></li> --}}
+                {{!-- <li><a href="#" >&gt;</a></li> --}}
               </ul>
             </div>
           </div>
         </div>
     	</div>
     </section>
-<<<<<<< HEAD
+
 {{>footer}}
-=======
->>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
+
+
+              {{!-- <ul>
+                <li><a href="#">&lt;</a></li>
+                <li class="active"><span>1</span></li>
+                {{#each pageArr}}
+                <li class="active"><a href="/pagination/{{[]}}">{{[]}}</a></li>
+                {{/each}}
+                <li><a href="#" >2</a></li>
+                <li><a href="#" >3</a></li>
+                <li><a href="#" >4</a></li>
+                <li><a href="#" >&gt;</a></li>
+              </ul> --}}

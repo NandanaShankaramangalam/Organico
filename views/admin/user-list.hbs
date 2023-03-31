@@ -1,52 +1,20 @@
-<<<<<<< HEAD
+
 {{>admin-header}}
-=======
-{{!-- 
-        <script src="https://kit.fontawesome.com/4544b2b530.js" crossorigin="anonymous"></script>
-		<div class="py-2" style="background-color: #82AE46;">
-		</div>
-    
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar  ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="index.html" style="color: #82AE46;">ORGANICO</a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
 
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="/admin/user-list" class="nav-link">Users</a></li>
-	          <li class="nav-item"><a href="/admin/product-list" class="nav-link">Products</a></li>
-	          <li class="nav-item"><a href="/admin/add-category" class="nav-link">Category</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Orders</a></li>
-	           <li class="nav-item"><a class="nav-link" href=""><i class="fa-solid fa-user"></i>  {{admin.email}}</li></a>
 
-	        </ul>
-	      </div>
-	    </div>
-	  </nav> --}}
-    <!-- END nav -->
->>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
-
-    <div class="hero-wrap hero-bread" style="background-image: url('/images/bg_1.jpg');">
-      <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center">
-          	{{!-- <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="index.html">Product</a></span> <span>Product Single</span></p> --}}
-            <h1 class="mb-0 bread">USER MANAGEMENT</h1>
-          </div>
-        </div>
-      </div>
-    </div>
 
    
 
 {{!-- table start --}}
-<table class="table mt-2">
+<div class="container mt-5">
+ <h2 class="text-center">USER MANAGEMENT</h2>
+</div>
+
+{{!-- <div class="container mt-3">
+<table class="table" id="myTable">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">Sl No</th>
+      <th scope="col">Sl.No</th>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Phone Number</th>
@@ -58,7 +26,7 @@
   <tbody>
     {{#each dataList}}
     <tr>
-      <td>{{@index}}</td>
+      <td>{{inc @index}}</td>
       <td>{{name}}</td>
       <td>{{email}}</td>
       <td>{{phone}}</td>
@@ -75,3 +43,61 @@
     {{/each}}
     </tbody>
 </table>
+</div> --}}
+<div class="container">
+        <div class="row mt-3">
+            <div class="col-12">
+                <div class="table-responsive p-2">
+                    <table class="table table-striped table-bordered" id="example">
+                        <thead>
+                            <tr>
+                                <th>Sl.No</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           {{#each dataList}}
+                            <tr>
+                                <td>{{inc @index}}</td>
+                                <td>{{name}}</td>
+                                <td>{{email}}</td>
+                                <td>{{phone}}</td>
+                                {{!-- <td> --}}
+                                   
+                                    {{#if status}}
+                                    <td class="text-success">Active</td>
+                                    <td><a class="btn btn-secondary" onclick="return confirm('Are you sure you want to block {{name}}?')" href="/admin/block-user/{{_id}}">Block</a></td>
+                                    {{!-- <a href="/admin/listproduct/{{_id}}">
+                                        <button type="button" class="btn btn-danger" data-toggle="modal"
+                                            data-target=".bd-example-modal-sm"
+                                            onclick="return confirm('Are you sure to unlist the data?')">unlist</button> --}}
+                                        {{else}}
+                                         <td class="text-danger">Blocked</td>
+                                         <td><a class="btn btn-warning" onclick="return confirm('Are you sure you want to unblock {{name}}?')" href="/admin/unblock-user/{{_id}}">Unblock</a></td>
+                                        {{!-- <a href="/admin/unlistproduct/{{_id}}">
+                                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                                data-target=".bd-example-modal-sm"
+                                                onclick="return confirm('Are you sure to list the data?')">list</button> --}}
+                                            {{/if}}
+                                        </a>
+                                        <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog"
+                                            aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    Delete Cancelled
+                                                </div>
+                                            </div>
+                                        </div>
+                                {{!-- </td> --}}
+                            </tr>
+                          {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>

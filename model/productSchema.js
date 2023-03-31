@@ -28,6 +28,10 @@ const productData = mongoose.Schema({
     Image : {
         type : Array,
         required : true
+    },
+    status : {
+    type : Boolean,
+    required : true
     }
 });
 

@@ -1,6 +1,6 @@
-<<<<<<< HEAD
+
 {{>admin-header}}
-=======
+
 {{!--  
         <script src="https://kit.fontawesome.com/4544b2b530.js" crossorigin="anonymous"></script>
 		<div class="py-2" style="background-color: #82AE46;">
@@ -27,7 +27,7 @@
 	    </div>
 	  </nav> --}}
     <!-- END nav -->
->>>>>>> 44fc99901b655be9570cb355c355657cdc30e2cf
+
 
     <div class="hero-wrap hero-bread" style="background-image: url('/images/bg_1.jpg');">
       <div class="container">
@@ -67,10 +67,10 @@
   </form>
 </div>
 
-<table class="table mt-4">
+<table class="table mt-4" id="myTable">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">Sl No</th>
+      <th scope="col">Sl.No</th>
       <th scope="col">Category</th>
       <th></th>
     </tr>
@@ -78,11 +78,15 @@
   <tbody>
     {{#each categoryData}}
     <tr>
-      <td scope="row">{{@index}}</td>
+      <td scope="row">{{inc @index}}</td>
       <td>{{category}}</td>
       <td>
       <a class="btn btn-secondary"  href="/admin/edit-category/{{_id}}">Edit</a>
-      <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete {{category}}?')" href="/admin/delete-category/{{_id}}">Delete</a>
+      {{#if status}}
+      <a class="btn btn-warning" onclick="return confirm('Are you sure you want to unlist {{category}}?')" href="/admin/delete-category/{{_id}}">Unlist</a>
+      {{else}}
+      <a class="btn btn-danger" onclick="return confirm('Are you sure you want to list {{category}}?')" href="/admin/list-category/{{_id}}">List</a>
+      {{/if}}
       </td>
     </tr>
     {{/each}}
@@ -91,3 +95,10 @@
 <div>
   <p class="text-danger">{{errMsg}}</p>
 </div>
+
+<script>
+  $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+
+</script>

@@ -1,28 +1,89 @@
 
-        <script src="https://kit.fontawesome.com/4544b2b530.js" crossorigin="anonymous"></script>
-		<div class="py-2" style="background-color: #82AE46;">
-		</div>
-    
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar  ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="index.html" style="color: #82AE46;">ORGANICO</a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
+<head>
 
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="/admin/user-list" class="nav-link">Users</a></li>
-	          <li class="nav-item"><a href="/admin/product-list" class="nav-link">Products</a></li>
-	          <li class="nav-item"><a href="/admin/add-category" class="nav-link">Category</a></li>
-	          <li class="nav-item"><a href="/admin/order-list" class="nav-link">Orders</a></li>
-	           <li class="nav-item"><a class="nav-link" href=""><i class="fa-solid fa-user"></i>  {{admin.email}}</li></a>
-               <li class="nav-item"><a href="/admin/logout" class="nav-link" style="text-decoration: none;color: black;">Logout<i class="fa-solid fa-right-from-bracket ms-2"></i></a></li>
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
-    <!-- END nav -->
+{{!-- <script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script> --}}
+{{!-- <script>
+  //jQuery.noConflict();
+  //jQuery(document).ready(function($) {
+    //$('#myTable').DataTable();
+  //});
+</script> --}}
+
+</head>
+<div style="height: 20px; width:100%; background-color:#82AE46"></div>
+<nav class="navbar navbar-expand-md bg-body-tertiary pt-3 pb-3" style="background-color:#fff;color: black;">
+  <div class="container-xl">
+    <div class="navbar-brand mt-1" >
+	  <a class="navbar-brand" style="color: #82AE46;">ORGANICO</a>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"><i class="fa-solid fa-bars"></i></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active text-dark" aria-current="page" href="/admin/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="/admin/user-list">Users</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="/admin/product-list" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Product
+          </a>
+          <ul class="dropdown-menu">
+			<li><a class="dropdown-item" href="/admin/product-list">Products list</a></li>
+            <li><a class="dropdown-item" href="/admin/add-product">Add Product</a></li>
+            
+          </ul>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="/admin/add-category">Categories</a>
+        </li>
+		 <li class="nav-item">
+          <a class="nav-link text-dark" href="/admin/order-list">Orders</a>
+        </li>
+        
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Coupon
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/admin/coupon-list">Coupon list</a></li>
+            <li><a class="dropdown-item" href="/admin/coupon">Add Coupon</a></li>
+          </ul>
+        </li>
+
+         <li class="nav-item">
+          <a class="nav-link text-dark" href="/admin/banner">Banner</a>
+        </li>
+         <li class="nav-item">
+			<li class="nav-item text-dark"><a class="nav-link text-dark" href=""><i class="fa-solid fa-user"></i> {{admin.email}}</a></li>
+        </li> 
+		 <li class="nav-item">
+          <li class="nav-item"><a href="/admin/logout" class="nav-link" style="text-decoration: none;color: black;">Logout<i class="fa-solid fa-right-from-bracket ms-2"></i></a></li>
+        </li>    
+	  </ul>
+    </div>
+  </div>
+</nav>
+
+
+<style>
+	a{
+		color: black;
+	}
+	nav {
+        box-shadow: 0 2px 4px 0 rgba(70, 70, 70, 0.2);
+    }
+</style>
+
 
     

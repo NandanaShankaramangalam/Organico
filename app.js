@@ -47,6 +47,19 @@ hb.handlebars.registerHelper('eq',function(a,b){
   return a == b;
 });
 
+
+hb.handlebars.registerHelper('gte',function(a,b){
+  return a >= b;
+});
+
+hb.handlebars.registerHelper('mul',function(a,b){
+  return a*b;
+});
+
+hb.handlebars.registerHelper('inc',function(a,b){
+  return parseInt(a) + 1;
+});
+
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
@@ -55,6 +68,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
+  console.log(err);
   res.render('error');
 });
 
