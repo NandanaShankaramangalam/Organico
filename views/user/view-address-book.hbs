@@ -1,45 +1,44 @@
- {{>user-header}}
+{{>user-header}}
 
 <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
-		<div class="container">
-			<div class="row no-gutters slider-text align-items-center justify-content-center">
-				<div class="col-md-9 ftco-animate text-center">
-					<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Checkout</span>
-					</p>
-					<h1 class="mb-0 bread">Address Book</h1>
-				</div>
-			</div>
-		</div>
-	</div>
-{{!-- End --}}
-<div class="container d-flex justify-content-end" >
-    
-    <a href="/add-address" class="btn btn-primary me-3 mt-3" >Add Address</a>
-    {{!-- <a href="/edit-address" class="btn btn-primary me-3 mt-3" >Edit Address</a> --}}
+  <div class="container">
+    <div class="row no-gutters slider-text align-items-center justify-content-center">
+      <div class="col-md-9 ftco-animate text-center">
+        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Checkout</span>
+        </p>
+        <h1 class="mb-0 bread">Address Book</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container d-flex justify-content-end">
+
+  <a href="/add-address" class="btn btn-primary me-3 mt-3">Add Address</a>
 </div>
 
-    <div class="container mt-1" style="position: relative;top:20px">
-<div class=" row  ">
+<div class="container mt-1" style="position: relative;top:20px">
+  <div class=" row  ">
 
     {{#each data.address}}
-<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-<div class="card mt-3 mb-3" style="width: 15rem;">
-  
-  <div class="card-body">
-    <a href="/edit-address/{{id}}" style="color:rgb(155, 26, 26)"><i class="fa-solid fa-pencil"></i></a>
-    <a href="/remove-address/{{id}}" onclick="return confirm('Are you sure you want to delete the address?');"><p style="float: right;color:rgb(155, 26, 26)"><i class="fa-solid fa-trash"></i></p></a>
-    <h5 class="card-text text-center">{{name}}</b></h5>
-    <h6 class="card-text text-center">{{street}}</b></h6>
-    <h6 class="card-text text-center">{{state}}</b></h6>
-    <h6 class="card-text text-center">{{town}}</b></h6>
-    <h6 class="card-text text-center">{{zip}}</b></h6>
-    <h6 class="card-text text-center">{{phone}}</b></h6>
-    <h6 class="card-text text-center">{{email}}</b></h6>
-  </div> 
-  </div>
-  </div>
-    {{/each}}
-    </div>
-    </div>
-    {{>footer}}
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+      <div class="card mt-3 mb-3" style="width: 15rem;">
 
+        <div class="card-body">
+          <a href="/edit-address/{{id}}" style="color:rgb(155, 26, 26)"><i class="fa-solid fa-pencil"></i></a>
+          <a href="/remove-address/{{id}}" onclick="return confirm('Are you sure you want to delete the address?');">
+            <p style="float: right;color:rgb(155, 26, 26)"><i class="fa-solid fa-trash"></i></p>
+          </a>
+          <h5 class="card-text text-center">{{name}}</b></h5>
+          <h6 class="card-text text-center">{{street}}</b></h6>
+          <h6 class="card-text text-center">{{state}}</b></h6>
+          <h6 class="card-text text-center">{{town}}</b></h6>
+          <h6 class="card-text text-center">{{zip}}</b></h6>
+          <h6 class="card-text text-center">{{phone}}</b></h6>
+          <h6 class="card-text text-center">{{email}}</b></h6>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
+{{>footer}}

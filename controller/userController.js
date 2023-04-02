@@ -798,6 +798,99 @@ catch(err){
 }
  },
 //  End forgot password
+getContactUs: async(req,res,next)=>{
+   try{
+     errMsg = req.session.errMsg;
+     res.render('user/contact-us',{errMsg});
+   }
+   catch(err){
+    next(err);
+   }
+},
+contactUs : async(req,res,next)=>{
+   try{
+    data = req.body;
+    console.log("cntct",data);
+    let emailRegex=/^(\w){3,16}@([A-Za-z]){5,8}.([A-Za-z]){2,3}$/gm;
+    let nameRegex=/^([A-Za-z ]){3,20}$/gm;
+    let subjectRegex=/^([A-Za-z0-9 ]){8,20}$/gm;
+    let messageRegex=/^([A-Za-z0-9 ]){10,50}$/gm;
+    let response={}
+    // let checkuser = await userCollection.findOne({email:data.email})
+
+    if(data){
+     if(data.name == ''){
+      req.session.errMsg = 'Name is required';
+      res.redirect('/contact-us');
+     }
+     else if(nameRegex.test(data.name) == false){
+      req.session.errMsg = 'Email is invalid';
+      res.redirect('/contact-us');
+      }
+     if(data.email == ''){
+      req.session.errMsg = 'Email is required';
+      res.redirect('/contact-us');
+     }
+     else if(emailRegex.test(data.email) == false){
+      req.session.errMsg = 'Email is invalid';
+      res.redirect('/contact-us');
+      }
+     else if(data.subject == ''){
+      req.session.errMsg = 'Subject is required';
+      res.redirect('/contact-us');
+     }
+     else if(subjectRegex.test(data.subject) == false){
+      req.session.errMsg = 'Subject is invalid';
+      res.redirect('/contact-us');
+      }
+     else if(data.message == ''){
+      req.session.errMsg = 'Message is required';
+      res.redirect('/contact-us');
+     }
+     else if(messageRegex.test(data.message) == false){
+      req.session.errMsg = 'Message is invalid';
+      res.redirect('/contact-us');
+      }
+      else{
+      let mailTransporter = nodemailer.createTransport({
+        service : "gmail",
+        auth : {
+            user:process.env.EMAIL_ADDRESS,
+            pass:process.env.EMAIL_PASSWORD
+        }
+    })
+
+    let details = {
+      from:data.email,
+      to:process.env.EMAIL_ADDRESS, 
+      subject:data.subject,
+      text: data.message
+  }
+
+  mailTransporter.sendMail(details,(err)=>{
+      if(err){
+          console.log(err);
+      }else{
+          console.log("Contact mail sent successfully");
+          response.status = true
+          res.json(response);
+      }
+  })
+}
+    }
+   }
+   catch(err){
+    next(err);
+   }
+},
+about : async(req,res,next)=>{
+  try{
+   res.render('user/about');
+  }
+  catch(err){
+    next(err)
+  }
+},
  logout : (req,res,next)=>{
   try{
   req.session.user = null;

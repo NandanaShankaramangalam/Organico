@@ -176,7 +176,10 @@ router.post('/set-forgot-password',userController.resetNewPassword);
 
 router.post('/forgot-password-otp',userController.generateOtp);
 
+router.get('/contact-us',userController.getContactUs);
+router.post('/contact-us',userController.contactUs);
 
+router.get('/about',userController.about);
 
 router.get('/logout',verifyLogin,userController.logout);
 

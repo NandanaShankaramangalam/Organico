@@ -1,119 +1,94 @@
+{{>user-header}}
 
- {{>user-header}} 
-
-
-  <div class="hero-wrap hero-bread" style="background-image: url('/images/bg_1.jpg');">
-      <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center">
-          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Cart</span></p>
-            <h1 class="mb-0 bread">View Ordered Products</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    {{!-- End --}}
-
-
-
-
-<div class="container mt-5 mb-5">
-  {{#if (eq orderData.orderStatus 'order cancelled')}}
-  {{else}}
-  <div class="" style="float: right;">
-    <a  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >Cancel Order</a>
-  </div>
-  {{/if}}
-<div class=" row ">
-
-    {{#each orderItems}}
-<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-<div class="card mt-3 mb-3" style="width: 15rem;">
-   <img src="/product-images/{{productDetails.Images.[0]}}.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-text text-center"><b>{{productDetails.name}}</b></h5>
-    <h6 class="card-text text-center" style="color: grey;">{{productDetails.brand}}</h6>
-    <h6 class="card-text text-center">Qty:{{quantity}}</h6>
-    <h6 class="card-text text-center fw-bold">Rs.{{productDetails.price}}</h6>
-  </div> 
-  </div>
-  </div>
-    {{/each}}
-    </div>
-    </div>
-
-    {{>footer}}
-
-   <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cancel Order</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        {{!-- jkjn --}}
-		<div class="cart-detail p-3 p-md-4">
-								<p class="billing-heading mb-4 fs-6 fw-bold">Choose Reason</p>
-								<div class="form-group">
-									<div class="col-md-12">
-										<div class="radio">
-											<label><input type="radio" name="reason" value="Delayed delivery"
-													class="mr-2" checked>Delayed delivery</label>
-										</div>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-md-12">
-										<div class="radio">
-											<label><input type="radio" name="reason" value="Item price is too high"
-													class="mr-2" >Item price is too high</label>
-										</div>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-md-12">
-										<div class="radio">
-											<label><input type="radio" name="reason" value="Need to change shipping address"
-													class="mr-2">Need to change shipping address</label>
-										</div>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-md-12">
-										<div class="radio">
-											<label><input type="radio" name="reason" value="My reason is not  listed here"
-													class="mr-2">My reason is not  listed here</label>
-										</div>
-									</div>
-								</div>
-								{{!-- <div class="form-group">
-									<div class="col-md-12">
-										<div class="checkbox">
-											<label><input type="checkbox" value="" class="mr-2"> I have read and accept
-												the terms and conditions</label>
-										</div>
-									</div>
-								</div> --}}
-								{{!-- <p><button type="submit" onclick="return placeOrder()" class="btn btn-primary py-3 px-4">Place an order</button></p> --}}
-								
-								{{!-- <p><a href="#" class="btn btn-primary py-3 px-4">Place an order</a></p> --}}
-							</div>
-		{{!-- end --}}
-      </div>
-      <div class="modal-footer">
-        {{#each orderItems}}
-		<a class="btn btn-primary ps-2 pe-2 pt-2 pb-2" href="/cancel-order/{{_id}}">Submit</a>
-        {{/each}}
-        {{!-- <button type="button" class="btn btn-primary ps-2 pe-2 pt-2 pb-2">Cancel Order</button> --}}
-		{{!-- <button type="button" class="btn btn-secondary ps-2 pe-2 pt-2 pb-2" data-bs-dismiss="modal">Close</button> --}}
-      </div>
-    </div>
-  </div>
+<div class="hero-wrap hero-bread" style="background-image: url('/images/bg_1.jpg');">
+	<div class="container">
+		<div class="row no-gutters slider-text align-items-center justify-content-center">
+			<div class="col-md-9 ftco-animate text-center">
+				<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Cart</span></p>
+				<h1 class="mb-0 bread">View Ordered Products</h1>
+			</div>
+		</div>
+	</div>
 </div>
 
+<div class="container mt-5 mb-5">
+	{{#if (eq orderData.orderStatus 'order cancelled')}}
+	{{else}}
+	<div class="" style="float: right;">
+		<a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Cancel Order</a>
+	</div>
+	{{/if}}
+	<div class=" row ">
 
+		{{#each orderItems}}
+		<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+			<div class="card mt-3 mb-3" style="width: 15rem;">
+				<img src="/product-images/{{productDetails.Images.[0]}}.jpg" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-text text-center"><b>{{productDetails.name}}</b></h5>
+					<h6 class="card-text text-center" style="color: grey;">{{productDetails.brand}}</h6>
+					<h6 class="card-text text-center">Qty:{{quantity}}</h6>
+					<h6 class="card-text text-center fw-bold">Rs.{{productDetails.price}}</h6>
+				</div>
+			</div>
+		</div>
+		{{/each}}
+	</div>
+</div>
 
+{{>footer}}
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Cancel Order</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div class="cart-detail p-3 p-md-4">
+					<p class="billing-heading mb-4 fs-6 fw-bold">Choose Reason</p>
+					<div class="form-group">
+						<div class="col-md-12">
+							<div class="radio">
+								<label><input type="radio" name="reason" value="Delayed delivery" class="mr-2"
+										checked>Delayed delivery</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-12">
+							<div class="radio">
+								<label><input type="radio" name="reason" value="Item price is too high"
+										class="mr-2">Item price is too high</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-12">
+							<div class="radio">
+								<label><input type="radio" name="reason" value="Need to change shipping address"
+										class="mr-2">Need to change shipping address</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-12">
+							<div class="radio">
+								<label><input type="radio" name="reason" value="My reason is not  listed here"
+										class="mr-2">My reason is not listed here</label>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>
+			<div class="modal-footer">
+				{{#each orderItems}}
+				<a class="btn btn-primary ps-2 pe-2 pt-2 pb-2" href="/cancel-order/{{_id}}">Submit</a>
+				{{/each}}
+			</div>
+		</div>
+	</div>
+</div>
+{{!--Modal end --}}

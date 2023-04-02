@@ -23,8 +23,8 @@ const Razorpay = require('razorpay');
 
 
 var instance = new Razorpay({
-  key_id: 'rzp_test_LXOpGrtoDyeDsU',
-  key_secret: 'yUO3fCWSTHYyvRv1l7nNnoGl',
+  key_id: process.env.RAZORPAY_KEY_ID,
+  key_secret: process.env.RAZORPAY_SECRET_KEY,
 });
 
 function getCartCount(userId){
@@ -446,7 +446,7 @@ module.exports = {
    
    console.log("bjbj",orderId);
    var crypto = require('crypto');
-   let hmac = crypto.createHmac('sha256','yUO3fCWSTHYyvRv1l7nNnoGl');
+   let hmac = crypto.createHmac('sha256',process.env.RAZORPAY_SECRET_KEY);
    hmac.update(details['payment[razorpay_order_id]']+'|'+details['payment[razorpay_payment_id]']);
    hmac = hmac.digest('hex');
    if(hmac == details['payment[razorpay_signature]']){

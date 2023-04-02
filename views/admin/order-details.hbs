@@ -2,17 +2,20 @@
  {{>admin-header}}
  
 
-
+{{!-- 
  <div class="hero-wrap hero-bread" style="background-image: url('/images/bg_1.jpg');">
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-          	{{!-- <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="index.html">Product</a></span> <span>Product Single</span></p> --}}
+
             <h1 class="mb-0 bread">ORDER DETAILS</h1>
           </div>
         </div>
       </div>
-    </div>
+    </div> --}}
+    <div class="container mt-5 mb-4">
+<h2 class="text-center">ORDER MANAGEMENT</h2>
+</div>
     {{!-- End --}}
   
 
@@ -62,25 +65,11 @@
     </div>
     <div class="col-md-6" style="border: 1px solid rgb(189, 189, 189)">
       <div class="mt-3 ps-3 mb-5">   
-      {{#if (eq orderDetails.orderStatus "order-cancelled")}}
+      {{#if (eq orderDetails.orderStatus "order-delivered")}}
    
-
-    {{!-- <div class="dropdown">
-
-    <div class="dropdown">
-
-  <button class="btn btn-secondary dropdown-toggle mb-5" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-
-    <li><a class="dropdown-item" href="#">Order out for delivery</a></li>
-    <li><a class="dropdown-item" href="#">Order delivered</a></li>
-    <li><a class="dropdown-item" href="#">Order cancelled</a></li>
-  </ul>
-  </div> --}}
   <h5 class="mb-3">Order Status</h5>
-  <img src="/images/cancelled.jpg" alt="" width="120px">
+  <img src="/images/delivery.jpg" alt="" width="120px">
+  <p class="text-success ms-2">Order delivered</p>
   {{else}} 
   <h5 class="mb-3">Update Order Status</h5>
   <form action="/admin/order-details/{{orderId}}" method="post">

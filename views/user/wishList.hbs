@@ -1,94 +1,77 @@
+{{>user-header}}
 
-
-    {{>user-header}}
-   
-    <div class="hero-wrap hero-bread" style="background-image: url('/images/bg_1.jpg');">
-      <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center">
-          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Cart</span></p>
-            <h1 class="mb-0 bread">Wish List</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-
-	{{!-- <div>
-		<p id="item"  class="text-danger"></p>
-	</div> --}}
-    <div>
+<div class="hero-wrap hero-bread" style="background-image: url('/images/bg_1.jpg');">
+	<div class="container">
+		<div class="row no-gutters slider-text align-items-center justify-content-center">
+			<div class="col-md-9 ftco-animate text-center">
+				<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Cart</span></p>
+				<h1 class="mb-0 bread">Wish List</h1>
+			</div>
+		</div>
 	</div>
-    <section class="ftco-section ftco-cart">
-		<p id="item"  class="text-danger text-center"></p>
-		<p id="outOfStock"  class="text-danger text-center"></p>
-			<div class="container">
-				
-				<div class="row">
-    			<div class="col-md-12 ftco-animate">
-    				<div class="cart-list">
-	    				<table class="table">
-						    <thead class="thead-primary">
-						      <tr class="text-center">
-						       
-						        <th>Product</th>
-						        <th>Product name</th>
-						        <th>Price</th>
+</div>
+
+<div>
+</div>
+
+<section class="ftco-section ftco-cart">
+	<p id="item" class="text-danger text-center"></p>
+	<p id="outOfStock" class="text-danger text-center"></p>
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-12 ftco-animate">
+				<div class="cart-list">
+					<table class="table">
+						<thead class="thead-primary">
+							<tr class="text-center">
+
+								<th>Product</th>
+								<th>Product name</th>
+								<th>Price</th>
 								<th>Cart</th>
 								<th>Action</th>
-						        {{!-- <th>Quantity</th> --}}
-						        {{!-- <th>Total</th> --}}
-						      </tr>
-						    </thead>
-						    <tbody>
-                                {{#each wishListItems}}
-						      <tr class="text-center">
-								{{!-- {{#each productDetails}} --}}
-						        {{!-- <td class="product-remove"><a href="/remove-product/{{ProductDetails._id}}" onclick="return confirm('Are you sure you wanna delete it')"><span class="ion-ios-close"></span></a></td> --}}
-						        
-						        <td class="image-prod"><div class="img" style="background-image:url(/product-images/{{productDetails.Images.[0]}}.jpg);"></div></td>
-						        
-						        <td class="product-name">
-						        	<h3>{{productDetails.name}}</h3>
-						        	{{!-- <p>{{productDetails.description}}</p> --}}
-						        </td>
-						        
-						        <td class="price">Rs.{{productDetails.price}}</td>
-						        
-						        {{!-- <td class="quantity  ">
-						        	<div class="input-group mb-3 ps-5 ms-3" style="">
-										<button class="cart-item-count mr-3 pe-2 ps-2" onclick="changeQuantity('{{_id}}','{{productDetails._id}}','{{../user}}','{{@index}}','{{productDetails.name}}',-1)">-</button>
-										<button id="{{@index}}" class="cart-item-count ml-3 pe-2 ps-2" onclick="changeQuantity('{{_id}}','{{productDetails._id}}','{{../user}}','{{@index}}','{{productDetails.name}}',1)">+</button>
-					          	</div>
-								
-					          </td> --}}
-							    {{#if (eq productDetails.stock 0)}}
+							</tr>
+						</thead>
+						<tbody>
+							{{#each wishListItems}}
+							<tr class="text-center">
+
+								<td class="image-prod">
+									<div class="img"
+										style="background-image:url(/product-images/{{productDetails.Images.[0]}}.jpg);">
+									</div>
+								</td>
+
+								<td class="product-name">
+									<h3>{{productDetails.name}}</h3>
+								</td>
+
+								<td class="price">Rs.{{productDetails.price}}</td>
+
+								{{#if (eq productDetails.stock 0)}}
 								<td class="price"><span class="text-danger">Out of stock!</span></td>
 								{{else}}
-						        <td><a href="/add-to-cart/{{productDetails._id}}" onclick="addToCart({{productDetails._id}})"> <i  class="fa-solid fa-cart-shopping" style="color: #82AE46;"></i></a></td>
+								<td><a href="/add-to-cart/{{productDetails._id}}"
+										onclick="addToCart({{productDetails._id}})"> <i
+											class="fa-solid fa-cart-shopping" style="color: #82AE46;"></i></a></td>
 								{{/if}}
-								<td class="product-remove"><a href="/remove-wishlist-product/{{productDetails._id}}" onclick="return confirm('Are you sure you wanna delete it')"><span class="ion-ios-close"></span></a></td>
-						      </tr>
-							  
-                              {{/each}}
-							  
-                              <!-- END TR-->
+								<td class="product-remove"><a href="/remove-wishlist-product/{{productDetails._id}}"
+										onclick="return confirm('Are you sure you wanna delete it')"><span
+											class="ion-ios-close"></span></a></td>
+							</tr>
 
-						      
-                              <!-- END TR-->
-						    </tbody>
-						  </table>
-					  </div>
-    			</div>
-    		</div>
-    		<div class="row justify-content-end">
-				
-    			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
-    		</div>
+							{{/each}}
+
+						</tbody>
+					</table>
+				</div>
 			</div>
-		</section>	
+		</div>
+		<div class="row justify-content-end">
+			<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+			</div>
+		</div>
+</section>
 
-	{{>footer}}
-
-
-
-
+{{>footer}}

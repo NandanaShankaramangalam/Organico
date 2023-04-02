@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-
+require('dotenv').config();
 mongoose.set('strictQuery',false)
 const user = require('../model/userSchema');
 
-mongoose.connect('mongodb://127.0.0.1:27017/organico').then(()=>{
+mongoose.connect(process.env.MONGODB).then(()=>{
     console.log("connection success");
 })

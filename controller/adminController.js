@@ -445,10 +445,10 @@ insertEditedProducts : async(req,res,next)=>{
 showCategory : async(req,res,next)=>{
   try{
         let admin = req.session.admin;
-        errMsg = req.session.errMsg;
+        let errMsg = req.session.errMsg;
         let editCategoryData = req.session.editCategory;
         var categoryData = await category.find().toArray();
-
+        
         res.render('admin/add-category',{categoryData,errMsg,editCategoryData,admin});
         req.session.errMsg = null;
         req.session.editCategory = null; 
@@ -464,15 +464,25 @@ addCategory : async(req,res,next)=>{
     categoryInfo.status = true;
     console.log("CategoryInfo",categoryInfo);
     const response = {};
-        var nameRegex = /^([A-Za-z_ ]){3,20}$/i;
+    // var nameRegex = /^([A-Za-z_ ]){3,20}$/i;
+    catData = await category.findOne({category:categoryInfo.category});   
+    console.log("daytalow",catData.category.toLowerCase());
+        
         if(categoryInfo.category == ''){
-            errMsg = "Please enter a category!";
+          req.session.errMsg = "Please enter a category!";
             res.redirect('/admin/add-category');
         }
-        else if(nameRegex.test(categoryInfo.category) != true){
-            errMsg = "Category name invalid!";
+        // else if(nameRegex.test(categoryInfo.category) != true){
+        //   req.session.errMsg = "Category name invalid!";
+        //     res.redirect('/admin/add-category');
+        // }
+        else if(catData){
+          if(catData.category.toLowerCase() == categoryInfo.category.toLowerCase()){
+          req.session.errMsg = "Category name already exist!";
             res.redirect('/admin/add-category');
         }
+        }
+        
         else{
             category.insertOne(categoryInfo).then((data)=>{
                 response.id = data.insertedId;
@@ -482,7 +492,8 @@ addCategory : async(req,res,next)=>{
                     res.redirect('/admin/add-category');
                   }
                   else{
-                    req.session.errMsg = data;
+                    // req.session.errMsg = data;
+                    // req.session.errMsg = errMsg;
                     res.redirect('/admin/add-category');
                   }
              })
