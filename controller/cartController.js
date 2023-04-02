@@ -209,7 +209,7 @@ module.exports = {
       total[0].total = total[0].total - req.session.discountAmount;
       console.log("tot",total[0].total);
       req.session.total =  total[0].total;
-      subtotal = discountAmount +  total[0].total;
+      subtotal = parseFloat(discountAmount) +  parseFloat(total[0]?.total);
       console.log("inn", subtotal);
      }
     //  look

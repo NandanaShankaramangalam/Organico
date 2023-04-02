@@ -96,7 +96,7 @@ module.exports = {
         console.log("filter ",filter);
         console.log("category ",categoryList);
         let categories = await category.find().toArray();
-        console.log("cattt",categories);
+        // console.log("cattt",categories);
 
         if(sort && filter){
             if(sortId == 'ascending' && filterId == 'less-than-100'){
@@ -264,7 +264,7 @@ module.exports = {
           //   filterMsg = 'No results found!';
           //   }
           // }
-          console.log("catkist",categoryList);
+          console.log("catlist",categoryList);
           console.log("catId",categoryId);
           proCount = await product.countDocuments({category:categoryId});
           products = await product.find({category:categoryId}).limit(limit).skip(skip).toArray();
