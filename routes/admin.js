@@ -36,7 +36,6 @@ router.get('/block-user/:id',verifyLogin,adminController.blockUsers);
 router.get('/unblock-user/:id',verifyLogin,adminController.unblockUsers);
 
 router.get('/add-product',verifyLogin,adminController.showProducts);
-
 router.post('/add-product',adminController.addProducts);
 
 router.get('/product-list',verifyLogin,adminController.getProducts);

@@ -46,8 +46,10 @@ module.exports = {
     userSignup : (req,res,next)=>{
       try{
         errMsg = req.session.errMsg;
-        res.render('user/user-signup',{errMsg});
+        let info = req.session.info;
+        res.render('user/user-signup',{errMsg,info});
         req.session.errMsg = null;
+        req.session.info = null;
       }
       catch(err){
         next(err)
@@ -56,6 +58,7 @@ module.exports = {
     insertUser : async(req,res,next)=>{
       try{
         let userInfo = req.body;
+        req.session.info = req.body;
         console.log(userInfo);
             var nameRegex = /^([A-Za-z ]){5,25}$/gm;
             var emailRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
@@ -118,8 +121,8 @@ module.exports = {
               await userCollection.insertOne(userData).then((data)=>{
                 console.log(data); 
               });
-              req.session.user = req.body;
-              res.redirect('/');
+              // req.session.user = req.body;
+              res.redirect('/user-login');
             }    
           }
           catch(err){
@@ -315,7 +318,7 @@ catch(err){
  },
  getUserInfo : async(req,res,next)=>{
   try{
-  let cartCount = req.session.cartCount;
+    let cartCount = req.session.cartCount;
     let user = req.session.user;
     let userId = req.session.user._id;
     let userInfo = await userCollection.findOne({_id:ObjectId(userId)});
@@ -387,7 +390,8 @@ catch(err){
       }
      ]).toArray();
      console.log("hiii=",orderItems);
-     res.render('user/view-ordered-products',{orderItems,user,cartCount,orderData});
+    //  let id = orderItems._id;
+     res.render('user/view-ordered-products',{orderItems,user,cartCount,orderData,orderId});
     }
     catch(err){
       next(err)
@@ -801,7 +805,9 @@ catch(err){
 getContactUs: async(req,res,next)=>{
    try{
      errMsg = req.session.errMsg;
-     res.render('user/contact-us',{errMsg});
+     let cartCount = req.session.cartCount;
+     let user = req.session.user;
+     res.render('user/contact-us',{errMsg,user,cartCount});
    }
    catch(err){
     next(err);
@@ -885,7 +891,9 @@ contactUs : async(req,res,next)=>{
 },
 about : async(req,res,next)=>{
   try{
-   res.render('user/about');
+   let cartCount = req.session.cartCount;
+   let user = req.session.user;
+   res.render('user/about',{user,cartCount});
   }
   catch(err){
     next(err)

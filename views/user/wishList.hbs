@@ -13,7 +13,7 @@
 
 <div>
 </div>
-
+{{#if wishListItems}}
 <section class="ftco-section ftco-cart">
 	<p id="item" class="text-danger text-center"></p>
 	<p id="outOfStock" class="text-danger text-center"></p>
@@ -73,5 +73,10 @@
 			</div>
 		</div>
 </section>
-
+{{else}}
+<div class="text-center">
+	<img src="/images/emptyWishlist.jpg" alt="" width="300px">
+	<h4 class="text-secondary">Your wishlist is empty!</h4>
+</div>
+{{/if}}
 {{>footer}}

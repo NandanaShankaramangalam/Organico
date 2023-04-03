@@ -14,18 +14,19 @@
 
                 <div class="form-outline mb-2 ">
                   <label class="form-label" for="form3Example1cg">Product Name</label>
-                  <input type="text" name="name" id="form3Example1cg" class="form-control form-control-lg" style="border-style:solid ; border-color:#82AE46"/>
+                  <input type="text" name="name" value="{{info.name}}" id="form3Example1cg" class="form-control form-control-lg" style="border-style:solid ; border-color:#82AE46"/>
                 </div>
 
                 <div class="form-outline mb-2 ">
                   <label class="form-label" for="brand">Brand</label>
-                  <input type="text" name="brand" id="brand" class="form-control form-control-lg" style="border-style:solid ; border-color:#82AE46"/>
+                  <input type="text" name="brand" value="{{info.brand}}" id="brand" class="form-control form-control-lg" style="border-style:solid ; border-color:#82AE46"/>
                 </div>
 
-                <div class="form-outline mb-2">
+                <div class="form-outline mb-2"><i class="fa fa-angle-down product-form"></i>
                   <label class="form-label" for="category">Category</label>
                      {{!-- <input type="text" name="category" id="category" class="form-control form-control-lg" style="border-style:solid ; border-color:#82AE46"/>  --}}
                       <select name="category" id="category" class="form-control form-control-lg" style="border-style:solid ; border-color:#82AE46">  
+                        
                         <option value="">Select</option>
                         {{#each categoryData}}
                         <option value="{{category}}">{{category}}</option>
@@ -38,17 +39,17 @@
 
                 <div class="form-outline mb-2">
                   <label class="form-label" for="price">Price</label>
-                  <input type="text" name="price" id="price" class="form-control form-control-lg" style="border-style:solid ; border-color:#82AE46"/>
+                  <input type="text" name="price" value="{{info.price}}" id="price" class="form-control form-control-lg" style="border-style:solid ; border-color:#82AE46"/>
                 </div>
 
                 <div class="form-outline mb-2">
                   <label class="form-label" for="stock">Stock</label>
-                  <input type="text" name="stock" id="stock" class="form-control form-control-lg" style="border-style:solid ; border-color:#82AE46"/>
+                  <input type="text" name="stock" value="{{info.stock}}" id="stock" class="form-control form-control-lg" style="border-style:solid ; border-color:#82AE46"/>
                 </div>
 
                 <div class="form-outline mb-2">
                   <label class="form-label" for="description">Description</label>
-                  <textarea name="description" id="description" cols="8" rows="5" class="form-control form-control-lg" style="border-style:solid ; border-color:#82AE46" noresize></textarea>
+                  <textarea name="description" value="{{info.description}}" id="description" cols="8" rows="5" class="form-control form-control-lg" style="border-style:solid ; border-color:#82AE46" noresize></textarea>
                 </div>
 
                 <div class="form-outline mb-2">

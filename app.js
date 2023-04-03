@@ -69,7 +69,12 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   console.log(err);
-  res.render('error');
+  let route = (req.url).split("/")[1]
+    if(route=="admin")
+        admin = true
+    else
+        admin = false
+  res.render('error',{admin});
 });
 
 module.exports = app;

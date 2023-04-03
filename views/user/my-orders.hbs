@@ -14,7 +14,7 @@
       </div>
     </div>
     {{!-- End --}}
-
+{{#if orderInfo}}
 <section class="ftco-section ftco-cart">
 		<p id="item"  class="text-danger text-center"></p>
 			<div class="container">
@@ -76,10 +76,16 @@
     			</div>
 
     		</div>
-			{{>footer}}
-
+			
     		</div>
-
+			</section>
+			{{else}}
+			<div class="text-center">
+	<img src="/images/order.webp" alt="" width="300px">
+	<h4 class="text-secondary">No orders yet!</h4>
+</div>
+{{/if}}
+{{>footer}}
 
 		{{!-- modal --}}
 		<!-- Button trigger modal -->

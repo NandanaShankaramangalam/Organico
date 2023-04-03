@@ -176,8 +176,10 @@ unblockUsers : async(req,res,next)=>{
 showProducts : async(req,res,next)=>{
   try{
         errMsg = req.session.errMsg;
+        let info = req.session.info;
         var categoryData = await category.find().toArray();
-        res.render('admin/add-product',{errMsg,categoryData});
+        res.render('admin/add-product',{errMsg,categoryData,info});
+        req.session.errMsg = null;
         // resolve(categoryData);
   }
   catch(err){
@@ -188,6 +190,7 @@ showProducts : async(req,res,next)=>{
 addProducts : async(req,res,next)=>{
   try{
     let productInfo = req.body;
+    req.session.info = req.body;
     let Images = req.files.image;
     const response = {};
     var nameRegex = /^([A-Za-z0-9_ ]){3,20}$/i;
@@ -464,9 +467,20 @@ addCategory : async(req,res,next)=>{
     categoryInfo.status = true;
     console.log("CategoryInfo",categoryInfo);
     const response = {};
+
+    const reg = new RegExp(categoryInfo.category,"i")
+            // let result = await categories.findOne({category:{$regex:reg}})
+            // if(result){
+            //     req.session.admin_err = {category:"Category already exist!"}
+            //     req.session.adminData = data
+            //     res.redirect("/admins/add_category")
+            // }else{
+            //     await categories.insertOne({category:data.category,sub_category:sub,status:true})
+            //     res.redirect("/admins/category")
+            // }
     // var nameRegex = /^([A-Za-z_ ]){3,20}$/i;
-    catData = await category.findOne({category:categoryInfo.category});   
-    console.log("daytalow",catData.category.toLowerCase());
+    catData = await category.findOne({category:{$regex:reg}});   
+    console.log("daytalow",catData);
         
         if(categoryInfo.category == ''){
           req.session.errMsg = "Please enter a category!";
@@ -477,7 +491,7 @@ addCategory : async(req,res,next)=>{
         //     res.redirect('/admin/add-category');
         // }
         else if(catData){
-          if(catData.category.toLowerCase() == categoryInfo.category.toLowerCase()){
+          if(catData.category){
           req.session.errMsg = "Category name already exist!";
             res.redirect('/admin/add-category');
         }

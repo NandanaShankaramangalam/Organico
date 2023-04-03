@@ -474,19 +474,23 @@ module.exports = {
   let couponCode = req.body.couponCode;
   let total = await getTotalAmount(req.session.user._id);
   let discountAmount;
-  let cartCount = req.session.cartCount;
+  let cartCount = req.session.cartCount;   
   console.log("cccddd",couponCode);
   console.log("cccddd",total);
   // let cartData = await cart.find({userId:req.session.user._id}).toArray();
   let couponData = await coupon.findOne({coupon:couponCode});
+  let expiry=new Date(couponData.expiryDate)
+  let today=new Date()
+  let exp=(expiry-today)/1000*60*60*24
+  console.log(exp);  
   console.log("insideee",total[0].total,cartCount);
   if(couponData?.discountType == "percentage"){
-    if(total[0].total >= couponData.minAmount && cartCount >= couponData.minItems){
+    if(total[0].total >= couponData.minAmount && cartCount >= couponData.minItems && exp>0){
       console.log("inside",total[0].total,cartCount);
       discountAmount = (total[0].total * couponData.discount)/100;
     }
   }
-  else if(total[0].total >= couponData.minAmount && cartCount >= couponData.minItems){
+  else if(total[0].total >= couponData.minAmount && cartCount >= couponData.minItems && exp>0){
     console.log("outside",total[0].total,cartCount);
     discountAmount = couponData.discount;
   }
@@ -499,8 +503,16 @@ module.exports = {
   console.log("cc", req.session.discountAmount);
   console.log("ddddddd",couponData);
   console.log("ccountt",cartCount);
-  if(total[0].total <= couponData.minAmount && cartCount <= couponData.minItems){
-    req.session.errCoupon = 'Not eligible for this coupon!';
+  if(total[0].total < couponData.minAmount){
+    req.session.errCoupon = 'Not eligible.Please match minimum amount criteria!';
+    console.log("mm",req.session.errCoupon);
+  }
+  else if(cartCount < couponData.minItems){
+    req.session.errCoupon = 'Not eligible.Please match minimum items criteria!!';
+    console.log("mm",req.session.errCoupon);
+  }
+  else if(exp<0){
+    req.session.errCoupon = 'This coupon has expired!';
     console.log("mm",req.session.errCoupon);
   }
   console.log("errcoupon",req.session.coupon);

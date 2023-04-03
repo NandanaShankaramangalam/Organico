@@ -80,4 +80,30 @@ nav{
   border-color: rgb(172, 172, 172);
  
 }
-
+.product-form{
+  position: absolute;
+}
+@media screen and (max-width:768px){
+  .product-form{
+    top:36%;
+    right: 7%;
+  }
+}
+@media screen and (min-width:768px){
+  .product-form{
+    top:36%;
+    right: 6%;
+  }
+}
+@media screen and (min-width:992px){
+  .product-form{
+    top:36%;
+    right: 4%;
+  }
+}
+#applyCoupon{
+  color: white;
+}
+#applyCoupon:hover{
+  color: #82ae46;
+}
