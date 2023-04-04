@@ -71,8 +71,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="row justify-content-end">
-			<div class="cart-total mb-3">
+		<div class="row justify-content-between mt-3">
+			<div class="cart-total mb-3 col-md-5">
 				<a>
 					<p data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="float:left" class="text-info">Show
 						available coupons</p>
@@ -80,7 +80,7 @@
 				<h3>Coupon Code</h3>
 				<p>Enter your coupon code if you have one</p>
 				<form class="info">
-					<div class="form-group">
+					<div class="form-group" >
 						<label for="">Coupon code</label>
 						<input type="text" id="couponCode" class="form-control text-left px-3" placeholder="">
 						<p class="text-danger" id="err">{{errCoupon}}</p>
@@ -89,10 +89,11 @@
 						{{/each}}
 					</div>
 				</form>
-			</div>
-			<p><a onclick="return applyCoupon()" class="btn btn-primary py-3 px-4" id="applyCoupon"
+				<p><a onclick="return applyCoupon()" class="btn btn-primary py-3 px-4" id="applyCoupon"
 					onmouseover="changeText()">Apply Coupon</a></p>
-		</div>
+		
+			</div>
+			
 		<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
 			<div class="cart-total mb-3">
 				<h3>Cart Totals</h3>
@@ -121,6 +122,7 @@
 				</p>
 			</div>
 			<p><a href="/place-order" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+		</div>
 		</div>
 	</div>
 	</div>
@@ -256,6 +258,7 @@
 			{{/each}}
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
 			</div>
 		</div>
 	</div>
