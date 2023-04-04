@@ -1,171 +1,165 @@
-
 {{>user-header}}
-    <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
-      <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center">
-          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Contact us</span></p>
-            <h1 class="mb-0 bread">Contact us</h1>
-          </div>
+<div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
+  <div class="container">
+    <div class="row no-gutters slider-text align-items-center justify-content-center">
+      <div class="col-md-9 ftco-animate text-center">
+        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Contact us</span></p>
+        <h1 class="mb-0 bread">Contact us</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="ftco-section contact-section bg-light">
+  <div class="container">
+    <div class="row d-flex mb-5 contact-info">
+      <div class="w-100"></div>
+      <div class="col-md-3 d-flex">
+        <div class="info bg-white p-4">
+          <p><span>Address:</span> Beach Road, Calicit, Kerala, India</p>
+        </div>
+      </div>
+      <div class="col-md-3 d-flex">
+        <div class="info bg-white p-4">
+          <p><span>Phone:</span> <a href="tel://1234567920">+91 9895 442 315</a></p>
+        </div>
+      </div>
+      <div class="col-md-3 d-flex">
+        <div class="info bg-white p-4">
+          <p><span>Email:</span> <a href="mailto:info@yoursite.com">organicostore2023@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="col-md-3 d-flex">
+        <div class="info bg-white p-4">
+          <p><span>Website</span> <a href="#">organicostore.online</a></p>
         </div>
       </div>
     </div>
 
-    <section class="ftco-section contact-section bg-light">
-      <div class="container">
-      	<div class="row d-flex mb-5 contact-info">
-          <div class="w-100"></div>
-          <div class="col-md-3 d-flex">
-          	<div class="info bg-white p-4">
-	            <p><span>Address:</span> Beach Road, Calicit, Kerala, India</p>
-	          </div>
+    <div class="row block-9 ">
+      <div class="col-md-6  order-md-last d-flex mx-auto">
+        <form id="contact-form" onsubmit="return validate()" method="post" name="contact"
+          class="bg-white p-5 contact-form">
+          <div class="form-group">
+            <input type="text" name="name" class="form-control" placeholder="Your Name">
           </div>
-          <div class="col-md-3 d-flex">
-          	<div class="info bg-white p-4">
-	            <p><span>Phone:</span> <a href="tel://1234567920">+91 9895 442 315</a></p>
-	          </div>
+          <div class="form-group">
+            <input type="text" name="email" class="form-control" placeholder="Your Email">
           </div>
-          <div class="col-md-3 d-flex">
-          	<div class="info bg-white p-4">
-	            <p><span>Email:</span> <a href="mailto:info@yoursite.com">organicostore2023@gmail.com</a></p>
-	          </div>
+          <div class="form-group">
+            <input type="text" name="subject" class="form-control" placeholder="Subject">
           </div>
-          <div class="col-md-3 d-flex">
-          	<div class="info bg-white p-4">
-	            <p><span>Website</span> <a href="#">organicostore.online</a></p>
-	          </div>
+          <div class="form-group">
+            <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
           </div>
-        </div>
-        
-        <div class="row block-9 " >
-          <div class="col-md-6  order-md-last d-flex mx-auto">
-            <form  id="contact-form" onsubmit="return validate()" method="post" name="contact" class="bg-white p-5 contact-form" >
-              <div class="form-group">
-                <input type="text" name="name" class="form-control" placeholder="Your Name">
-              </div>
-              <div class="form-group">
-                <input type="text" name="email" class="form-control" placeholder="Your Email">
-              </div>
-              <div class="form-group">
-                <input type="text" name="subject" class="form-control" placeholder="Subject">
-              </div>
-              <div class="form-group">
-                <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-              </div>
-              <div>
-                <p class="text-danger" id="errAdd">{{errMSg}}</p>
-              </div>
-              <div class="form-group">
-                <input type="submit"  value="Send Message" class="btn btn-primary py-3 px-5">
-              </div>
-              
-            </form>
-          
+          <div>
+            <p class="text-danger" id="errAdd">{{errMSg}}</p>
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
           </div>
 
-        </div>
-      
+        </form>
+
       </div>
-    </section>
 
-    {{>footer}}
+    </div>
 
-    <script>
-        function validate(){
-            let name = document.contact.name.value;
-            let email = document.contact.email.value;
-            let subject = document.contact.subject.value;
-            let message = document.contact.message.value;
+  </div>
+</section>
 
-            let emailRegex=/^(\w){3,16}@([A-Za-z]){5,8}.([A-Za-z]){2,3}$/gm;
-            let nameRegex=/^([A-Za-z ]){3,20}$/gm;
-            let subjectRegex=/^([A-Za-z0-9 ]){8,20}$/gm;
-            let messageRegex=/^([A-Za-z0-9 ]){10,50}$/gm;
+{{>footer}}
 
-            if(name == ''){
-            document.getElementById('errAdd').innerHTML="Name required";
-                return false;
-            }
-            else if(nameRegex.test(name) == false){
-            document.getElementById('errAdd').innerHTML = "Enter valid name";
-                return false;
-            }
-            else if(email == ''){
-            document.getElementById('errAdd').innerHTML="Email id required";
-                return false;
-            }
-            else if(emailRegex.test(email) == false){
-            document.getElementById('errAdd').innerHTML = "Enter valid email id";
-                return false;
-            }
-            else if(subject == ''){
-            document.getElementById('errAdd').innerHTML="Subject required";
-                return false;
-            }
-            else if(subjectRegex.test(subject) == false){
-            document.getElementById('errAdd').innerHTML = "Enter valid subject";
-                return false;
-            }
-            else if(message == ''){
-            document.getElementById('errAdd').innerHTML="Message required";
-                return false;
-            }
-            else if(messageRegex.test(message) == false){
-            document.getElementById('errAdd').innerHTML = "Enter valid message";
-                return false;
-            }
+<script>
+  function validate() {
+    let name = document.contact.name.value;
+    let email = document.contact.email.value;
+    let subject = document.contact.subject.value;
+    let message = document.contact.message.value;
+
+    let emailRegex = /^(\w){3,16}@([A-Za-z]){5,8}.([A-Za-z]){2,3}$/gm;
+    let nameRegex = /^([A-Za-z ]){3,20}$/gm;
+    let subjectRegex = /^([A-Za-z0-9 ]){8,20}$/gm;
+    let messageRegex = /^([A-Za-z0-9 ]){10,50}$/gm;
+
+    if (name == '') {
+      document.getElementById('errAdd').innerHTML = "Name required";
+      return false;
+    }
+    else if (nameRegex.test(name) == false) {
+      document.getElementById('errAdd').innerHTML = "Enter valid name";
+      return false;
+    }
+    else if (email == '') {
+      document.getElementById('errAdd').innerHTML = "Email id required";
+      return false;
+    }
+    else if (emailRegex.test(email) == false) {
+      document.getElementById('errAdd').innerHTML = "Enter valid email id";
+      return false;
+    }
+    else if (subject == '') {
+      document.getElementById('errAdd').innerHTML = "Subject required";
+      return false;
+    }
+    else if (subjectRegex.test(subject) == false) {
+      document.getElementById('errAdd').innerHTML = "Enter valid subject";
+      return false;
+    }
+    else if (message == '') {
+      document.getElementById('errAdd').innerHTML = "Message required";
+      return false;
+    }
+    else if (messageRegex.test(message) == false) {
+      document.getElementById('errAdd').innerHTML = "Enter valid message";
+      return false;
+    }
+
+  }
+
+  $('#contact-form').submit((e) => {
+    e.preventDefault();
+    $.ajax({
+      url: '/contact-us',
+      method: 'post',
+      data: $('#contact-form').serialize(),
+      success: (response) => {
+        //alert("Place order?");
+        if (response.status) {
+          //location.href = '/order-placed'
+          sweetAlert();
+          console.log("success")
+          setTimeout(() => {
+            location.reload();
+          }, 2000)
 
         }
-
-      $('#contact-form').submit((e) => {
-			e.preventDefault();
-			$.ajax({
-				url: '/contact-us',
-				method: 'post',
-				data: $('#contact-form').serialize(),
-				success: (response) => {
-					//alert("Place order?");
-					if (response.status) {
-						//location.href = '/order-placed'
-                        sweetAlert();
-                        console.log("success")
-                        setTimeout(()=>{
-                            location.reload();
-                        },2000)
-                        
-					}
-					else{
-						//razorpayPayment(response);
-                        console.log("failure")
-					}
-				}
-			})
-		})
-
-        function sweetAlert(){
-            Swal.fire({
-  position: 'bottom',
-  title: 'Email sent successfully! <span style="color: green; font-size: 20px;"> <i class="fa-regular fa-circle-check"></i> </span>',
-  showConfirmButton: false,
-  timer: 1200,
-  customClass: {
-    popup: 'my-popup-class',
-    content: 'my-content-class',
-    confirmButton: 'my-confirm-button-class'
-  },
-});
+        else {
+          //razorpayPayment(response);
+          console.log("failure")
         }
-    </script>
-    <style>
-        .my-popup-class {
-        width: 400px;
-        height: 100px;
-        font-size: 16px;
-        }
-    </style>
+      }
+    })
+  })
 
-        
-    
-  
-
-  
+  function sweetAlert() {
+    Swal.fire({
+      position: 'bottom',
+      title: 'Email sent successfully! <span style="color: green; font-size: 20px;"> <i class="fa-regular fa-circle-check"></i> </span>',
+      showConfirmButton: false,
+      timer: 1200,
+      customClass: {
+        popup: 'my-popup-class',
+        content: 'my-content-class',
+        confirmButton: 'my-confirm-button-class'
+      },
+    });
+  }
+</script>
+<style>
+  .my-popup-class {
+    width: 400px;
+    height: 100px;
+    font-size: 16px;
+  }
+</style>

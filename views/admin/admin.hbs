@@ -1,15 +1,5 @@
 {{>admin-header}}
 
-{{!-- <div class="hero-wrap hero-bread" style="background-image: url('/images/bg_1.jpg');">
-  <div class="container">
-    <div class="row no-gutters slider-text align-items-center justify-content-center">
-      <div class="col-md-9 ftco-animate text-center">
-        <h1 class="mb-0 bread">DASH BOARD</h1>
-      </div>
-    </div>
-  </div>
-</div> --}}
-
 <link rel="stylesheet" href="/stylesheets/dashboard.css">
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <section class="container ">
@@ -50,7 +40,6 @@
     <div class="col-lg-3 p-3 " style="">
       <div class="dashboard-small-box p-2" style="border-radius: 15px;">
         <div class="p-3 icon-border" style="background-color: #d34634;">
-          {{!-- <i class="text-white fs-1 fa-solid fa-trash"></i> --}}
           <i class="text-white fs-1 fa-solid fa-cart-shopping"></i>
         </div>
         <div>
@@ -63,7 +52,7 @@
 </section>
 <section>
   <div class="container mt-2 mb-2">
-   <a href="/admin/sales-report"><button class="btn btn-primary" style="float: right;">Sales Report</button></a>
+    <a href="/admin/sales-report"><button class="btn btn-primary" style="float: right;">Sales Report</button></a>
   </div>
 </section>
 <section class="container mt-5">
@@ -71,40 +60,34 @@
     <div id="top_x_div" class="m-0" style="width:100vw; height: 50vh;"></div>
   </div>
 </section>
-{{!-- <section class="container mt-5 mb-5">
-  <div class="row d-flex m-0 justify-content-center">
-    <div id="table_div"></div>
-  </div>
-</section> --}}
 
-
-
-<script >
+<script>
   $.ajax({
-    url:"/admin/getChart-Data",
-    method:"GET",
-    success:(revenue)=>{
-      const Data = [['Months','revenue']]
-      const Month = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    url: "/admin/getChart-Data",
+    method: "GET",
+    success: (revenue) => {
+      const Data = [['Months', 'revenue']]
+      const Month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
       revenue.forEach(value => {
-        Data.push([Month[value._id-1],value.revenue])
+        Data.push([Month[value._id - 1], value.revenue])
       })
-      google.charts.load('current', {'packages':['bar']});
+      google.charts.load('current', { 'packages': ['bar'] });
       google.charts.setOnLoadCallback(drawStuff);
 
       window.onresize = drawStuff;
-        function drawStuff() {
+      function drawStuff() {
         var data = new google.visualization.arrayToDataTable(Data);
 
         var options = {
-         
+
           legend: { position: 'none' },
           chart: {
             title: 'Monthly Revenue',
-            subtitle: 'Revenue in INR' },
+            subtitle: 'Revenue in INR'
+          },
           axes: {
             x: {
-              0: { side: 'top', label: 'YEAR 2023'} // Top x-axis.
+              0: { side: 'top', label: 'YEAR 2023' } // Top x-axis.
             }
           },
           bar: { groupWidth: "90%" }
@@ -116,6 +99,6 @@
       };
     }
   })
-  
+
 
 </script>

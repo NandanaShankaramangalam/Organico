@@ -1,99 +1,60 @@
-
 {{>admin-header}}
 
-{{!-- table start --}}
 <div class="container mt-5">
- <h2 class="text-center">USER MANAGEMENT</h2>
+    <h2 class="text-center">USER MANAGEMENT</h2>
 </div>
 
-{{!-- <div class="container mt-3">
-<table class="table" id="myTable">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Sl.No</th>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone Number</th>
-      <th scope="col">Status</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each dataList}}
-    <tr>
-      <td>{{inc @index}}</td>
-      <td>{{name}}</td>
-      <td>{{email}}</td>
-      <td>{{phone}}</td>
-      
-      {{#if status}}
-      <td class="text-success">Active</td>
-      <td><a class="btn btn-secondary" onclick="return confirm('Are you sure you want to block {{name}}?')" href="/admin/block-user/{{_id}}">Block</a></td>
-      {{else}}
-      <td class="text-danger">Banned</td>
-      <td><a class="btn btn-warning" onclick="return confirm('Are you sure you want to unblock {{name}}?')" href="/admin/unblock-user/{{_id}}">Unblock</a></td>
-      {{/if}}
-      <td><a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete {{name}}?')" href="/admin/delete-user/{{_id}}">Delete</a></td>
-    </tr>
-    {{/each}}
-    </tbody>
-</table>
-</div> --}}
 <div class="container">
-        <div class="row mt-3">
-            <div class="col-12">
-                <div class="table-responsive p-2">
-                    <table class="table table-striped table-bordered" id="example">
-                        <thead>
-                            <tr>
-                                <th>Sl.No</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Phone Number</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                           {{#each dataList}}
-                            <tr>
-                                <td>{{inc @index}}</td>
-                                <td>{{name}}</td>
-                                <td>{{email}}</td>
-                                <td>{{phone}}</td>
-                                {{!-- <td> --}}
-                                   
-                                    {{#if status}}
-                                    <td class="text-success">Active</td>
-                                    <td><a class="btn btn-secondary" onclick="return confirm('Are you sure you want to block {{name}}?')" href="/admin/block-user/{{_id}}">Block</a></td>
-                                    {{!-- <a href="/admin/listproduct/{{_id}}">
-                                        <button type="button" class="btn btn-danger" data-toggle="modal"
-                                            data-target=".bd-example-modal-sm"
-                                            onclick="return confirm('Are you sure to unlist the data?')">unlist</button> --}}
-                                        {{else}}
-                                         <td class="text-danger">Blocked</td>
-                                         <td><a class="btn btn-warning" onclick="return confirm('Are you sure you want to unblock {{name}}?')" href="/admin/unblock-user/{{_id}}">Unblock</a></td>
-                                        {{!-- <a href="/admin/unlistproduct/{{_id}}">
-                                            <button type="button" class="btn btn-danger" data-toggle="modal"
-                                                data-target=".bd-example-modal-sm"
-                                                onclick="return confirm('Are you sure to list the data?')">list</button> --}}
-                                            {{/if}}
-                                        </a>
-                                        <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog"
-                                            aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-sm">
-                                                <div class="modal-content">
-                                                    Delete Cancelled
-                                                </div>
-                                            </div>
-                                        </div>
-                                {{!-- </td> --}}
-                            </tr>
-                          {{/each}}
-                        </tbody>
-                    </table>
-                </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="table-responsive p-2">
+                <table class="table table-striped table-bordered" id="example">
+                    <thead>
+                        <tr>
+                            <th>Sl.No</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each dataList}}
+                        <tr>
+                            <td>{{inc @index}}</td>
+                            <td>{{name}}</td>
+                            <td>{{email}}</td>
+                            <td>{{phone}}</td>
+
+                            {{#if status}}
+                            <td class="text-success">Active</td>
+                            <td><a class="btn btn-secondary"
+                                    onclick="return confirm('Are you sure you want to block {{name}}?')"
+                                    href="/admin/block-user/{{_id}}">Block</a></td>
+
+                            {{else}}
+                            <td class="text-danger">Blocked</td>
+                            <td><a class="btn btn-warning"
+                                    onclick="return confirm('Are you sure you want to unblock {{name}}?')"
+                                    href="/admin/unblock-user/{{_id}}">Unblock</a></td>
+
+                            {{/if}}
+                            </a>
+                            <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog"
+                                aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        Delete Cancelled
+                                    </div>
+                                </div>
+                            </div>
+
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+</div>

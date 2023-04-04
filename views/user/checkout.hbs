@@ -1,124 +1,111 @@
+{{>user-header}}
 
-     {{>user-header}}
-
-
-
-
-	<div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
-		<div class="container">
-			<div class="row no-gutters slider-text align-items-center justify-content-center">
-				<div class="col-md-9 ftco-animate text-center">
-					<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Checkout</span>
-					</p>
-					<h1 class="mb-0 bread">Checkout</h1>
-				</div>
+<div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
+	<div class="container">
+		<div class="row no-gutters slider-text align-items-center justify-content-center">
+			<div class="col-md-9 ftco-animate text-center">
+				<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Checkout</span>
+				</p>
+				<h1 class="mb-0 bread">Checkout</h1>
 			</div>
 		</div>
 	</div>
+</div>
 
-
-	<section class="ftco-section">
-		<form onsubmit='return placeOrder()' name="myform" id="checkout-form"   method="post" class="billing-form">
+<section class="ftco-section">
+	<form onsubmit='return placeOrder()' name="myform" id="checkout-form" method="post" class="billing-form">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-xl-7 ftco-animate">
-						<h3 class="mb-4 billing-heading">Billing Details</h3>
-						<div class="row align-items-end">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="firstname">Firt Name</label>
-									<input type="text" name="fname" class="form-control" placeholder="" value="{{selectedAddress.fname}}">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="lastname">Last Name</label>
-									<input type="text" name="lname" class="form-control" placeholder="" value="{{selectedAddress.lname}}">
-								</div>
-							</div>
-							
-							<div class="w-100"></div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="streetaddress">Street Address</label>
-									<input type="text" name="street" class="form-control"
-										placeholder="House number and street name" value="{{selectedAddress.street}}">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="state">State</label>
-									<input type="text" name="state" class="form-control" value="{{selectedAddress.state}}">
-								</div>
-							</div>
-							<div class="w-100"></div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="towncity">Town / City</label>
-									<input type="text" name="town" class="form-control" placeholder="" value="{{selectedAddress.town}}">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="postcodezip">Postcode / ZIP *</label>
-									<input type="text" name="zip" class="form-control" placeholder="" value="{{selectedAddress.zip}}">
-								</div>
-							</div>
-							<div class="w-100"></div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="phone">Phone</label>
-									<input type="text" name="phone" class="form-control" placeholder="" value="{{selectedAddress.phone}}">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="emailaddress">Email Address</label>
-									<input type="text" name="email" class="form-control" placeholder="" value="{{selectedAddress.email}}">
-									<input type="text" name="userId" value="{{user._id}}" hidden>
-								</div>
-							</div>
-							<div class="w-100"></div>
-							<div class="col-md-12">
-								<div class="form-group mt-4">
-									<div>
-										<p id="err" class="text-danger"></p>
-									</div>
-									{{!-- <div class="radio">
-										<label class="mr-3"><input type="radio" name="optradio"> Create an Account?
-										</label>
-										<label><input type="radio" name="optradio"> Ship to different address</label>
-									</div> --}}
-									<input type="checkbox" class="mt-3" name="save" id=""
-										style=" width:20px ;height:20px" value=true>
-									<span class="ps-2 ">Save this address</span><br>
-									<p class="mt-3"><a href="/address-book" >Choose from saved address</a> </p>
-								</div>
+					<h3 class="mb-4 billing-heading">Billing Details</h3>
+					<div class="row align-items-end">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="firstname">Firt Name</label>
+								<input type="text" name="fname" class="form-control" placeholder=""
+									value="{{selectedAddress.fname}}">
 							</div>
 						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="lastname">Last Name</label>
+								<input type="text" name="lname" class="form-control" placeholder=""
+									value="{{selectedAddress.lname}}">
+							</div>
+						</div>
+
+						<div class="w-100"></div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="streetaddress">Street Address</label>
+								<input type="text" name="street" class="form-control"
+									placeholder="House number and street name" value="{{selectedAddress.street}}">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="state">State</label>
+								<input type="text" name="state" class="form-control" value="{{selectedAddress.state}}">
+							</div>
+						</div>
+						<div class="w-100"></div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="towncity">Town / City</label>
+								<input type="text" name="town" class="form-control" placeholder=""
+									value="{{selectedAddress.town}}">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="postcodezip">Postcode / ZIP *</label>
+								<input type="text" name="zip" class="form-control" placeholder=""
+									value="{{selectedAddress.zip}}">
+							</div>
+						</div>
+						<div class="w-100"></div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="phone">Phone</label>
+								<input type="text" name="phone" class="form-control" placeholder=""
+									value="{{selectedAddress.phone}}">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="emailaddress">Email Address</label>
+								<input type="text" name="email" class="form-control" placeholder=""
+									value="{{selectedAddress.email}}">
+								<input type="text" name="userId" value="{{user._id}}" hidden>
+							</div>
+						</div>
+						<div class="w-100"></div>
+						<div class="col-md-12">
+							<div class="form-group mt-4">
+								<div>
+									<p id="err" class="text-danger"></p>
+								</div>
+								<input type="checkbox" class="mt-3" name="save" id="" style=" width:20px ;height:20px"
+									value=true>
+								<span class="ps-2 ">Save this address</span><br>
+								<p class="mt-3"><a href="/address-book">Choose from saved address</a> </p>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="col-xl-5">
 					<div class="row mt-5 pt-3">
 						<div class="col-md-12 d-flex mb-5">
 							<div class="cart-detail cart-total p-3 p-md-4">
 								<h3 class="billing-heading mb-4">Cart Total</h3>
-								{{!-- <p class="d-flex">
-									<span>Subtotal</span>
-									<span>$20.60</span>
-								</p> --}}
 								<p class="d-flex">
 									<span>Delivery</span>
 									<span>Rs0.00</span>
 								</p>
-								{{!-- <p class="d-flex">
-									<span>Discount</span>
-									<span>$3.00</span>
-								</p> --}}
 								<hr>
 								<p class="d-flex total-price">
 									<span>Total</span>
 									<span>Rs.{{total.[0].total}}</span>
-									
 								</p>
 							</div>
 						</div>
@@ -136,154 +123,148 @@
 								<div class="form-group">
 									<div class="col-md-12">
 										<div class="radio">
-											<label><input type="radio" name="payment-method" value="COD"
-													class="mr-2" checked>Cash On Delivery</label>
+											<label><input type="radio" name="payment-method" value="COD" class="mr-2"
+													checked>Cash On Delivery</label>
 										</div>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="col-md-12">
 										<div class="radio">
-											<label><input type="radio" name="payment-method" value="wallet" class="mr-2"  {{#if (gte userData.wallet total.[0].total)}} {{else}}disabled{{/if}}>
-											Wallet &nbsp;<span class="text-danger">{{#if (gte userData.wallet total.[0].total)}}(Balance : ₹ {{userData.wallet}}){{else}}(Balance : ₹ {{userData.wallet}})<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Insufficient balance!{{/if}}</span></label>
+											<label><input type="radio" name="payment-method" value="wallet" class="mr-2"
+													{{#if (gte userData.wallet total.[0].total)}}
+													{{else}}disabled{{/if}}>
+												Wallet &nbsp;<span class="text-danger">{{#if (gte userData.wallet
+													total.[0].total)}}(Balance : ₹ {{userData.wallet}}){{else}}(Balance
+													: ₹ {{userData.wallet}})<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													Insufficient balance!{{/if}}</span></label>
 										</div>
 									</div>
 								</div>
-								{{!-- <div class="form-group">
-									<div class="col-md-12">
-										<div class="checkbox">
-											<label><input type="checkbox" value="" class="mr-2"> I have read and accept
-												the terms and conditions</label>
-										</div>
-									</div>
-								</div> --}}
-								<p><button type="submit" onclick="return placeOrder()" class="btn btn-primary py-3 px-4">Place an order</button></p>
-								
-								{{!-- <p><a href="#" class="btn btn-primary py-3 px-4">Place an order</a></p> --}}
+								<p><button type="submit" onclick="return placeOrder()"
+										class="btn btn-primary py-3 px-4">Place an order</button></p>
 							</div>
 						</div>
 					</div>
-				</div> <!-- .col-md-8 -->
+				</div>
 			</div>
 		</div>
-		</form>
+	</form>
 
-	</section>
-	{{>footer}} <!-- .section -->
-	
-{{!-- <script src="https://checkout.razorpay.com/v1/checkout.js"></script> --}}
+</section>
+{{>footer}}
 
-	</section> <!-- .section -->
-	
+</section>
 
 
 
-	<script>
-		$('#checkout-form').submit((e) => {
-			e.preventDefault();
-			$.ajax({
-				url: '/place-order',
-				method: 'post',
-				data: $('#checkout-form').serialize(),
-				success: (response) => {
-					alert("Place order?");
-					if (response.cod) {
-						location.href = '/order-placed'
-					}
-					else{
-						razorpayPayment(response);
-					}
+
+<script>
+	$('#checkout-form').submit((e) => {
+		e.preventDefault();
+		$.ajax({
+			url: '/place-order',
+			method: 'post',
+			data: $('#checkout-form').serialize(),
+			success: (response) => {
+				alert("Place order?");
+				if (response.cod) {
+					location.href = '/order-placed'
 				}
-			})
+				else {
+					razorpayPayment(response);
+				}
+			}
 		})
+	})
 
-		function razorpayPayment(order){
-			var options = {
-    "key": "rzp_test_LXOpGrtoDyeDsU", // Enter the Key ID generated from the Dashboard
-    "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-    "currency": "INR",
-    "name": "Organico Store",
-    "description": "Test Transaction",
-    "image": "https://example.com/your_logo",
-    "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-    "handler": function (response){
-		
-		verifyPayment(response,order)
-    },
-    "prefill": {
-        "name": "Gaurav Kumar",
-        "email": "gaurav.kumar@example.com",
-        "contact": "9000090000"
-    },
-    "notes": {
-        "address": "Razorpay Corporate Office"
-    },
-    "theme": {
-        "color": "#3399cc"
-    }
-};
-       var rzp1 = new Razorpay(options);
-	   rzp1.open();
+	function razorpayPayment(order) {
+		var options = {
+			"key": "rzp_test_LXOpGrtoDyeDsU", // Enter the Key ID generated from the Dashboard
+			"amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+			"currency": "INR",
+			"name": "Organico Store",
+			"description": "Test Transaction",
+			"image": "https://example.com/your_logo",
+			"order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+			"handler": function (response) {
 
-		}
+				verifyPayment(response, order)
+			},
+			"prefill": {
+				"name": "Gaurav Kumar",
+				"email": "gaurav.kumar@example.com",
+				"contact": "9000090000"
+			},
+			"notes": {
+				"address": "Razorpay Corporate Office"
+			},
+			"theme": {
+				"color": "#3399cc"
+			}
+		};
+		var rzp1 = new Razorpay(options);
+		rzp1.open();
 
-		function verifyPayment(payment,order){
-			$.ajax({
-				url : '/verify-payment',
-				data : {
-					payment,
-					order
-				},
-				method : 'post',
-				success : (response)=>{
-					console.log(response)
-					if(response.status){
-						
-						location.href = '/order-placed'
-					}
-					else{
-						alert('Payment failed');
-					}
+	}
+
+	function verifyPayment(payment, order) {
+		$.ajax({
+			url: '/verify-payment',
+			data: {
+				payment,
+				order
+			},
+			method: 'post',
+			success: (response) => {
+				console.log(response)
+				if (response.status) {
+
+					location.href = '/order-placed'
 				}
-			})
-		}
-	</script>
-
-	
-
-	<script>
-		$(document).ready(function () {
-
-			var quantitiy = 0;
-			$('.quantity-right-plus').click(function (e) {
-
-				// Stop acting like a button
-				e.preventDefault();
-				// Get the field name
-				var quantity = parseInt($('#quantity').val());
-
-				// If is not undefined
-
-				$('#quantity').val(quantity + 1);
-
-
-				// Increment
-
-			});
-
-			$('.quantity-left-minus').click(function (e) {
-				// Stop acting like a button
-				e.preventDefault();
-				// Get the field name
-				var quantity = parseInt($('#quantity').val());
-
-				// If is not undefined
-
-				// Increment
-				if (quantity > 0) {
-					$('#quantity').val(quantity - 1);
+				else {
+					alert('Payment failed');
 				}
-			});
+			}
+		})
+	}
+</script>
+
+
+
+<script>
+	$(document).ready(function () {
+
+		var quantitiy = 0;
+		$('.quantity-right-plus').click(function (e) {
+
+			// Stop acting like a button
+			e.preventDefault();
+			// Get the field name
+			var quantity = parseInt($('#quantity').val());
+
+			// If is not undefined
+
+			$('#quantity').val(quantity + 1);
+
+
+			// Increment
 
 		});
-	</script>
+
+		$('.quantity-left-minus').click(function (e) {
+			// Stop acting like a button
+			e.preventDefault();
+			// Get the field name
+			var quantity = parseInt($('#quantity').val());
+
+			// If is not undefined
+
+			// Increment
+			if (quantity > 0) {
+				$('#quantity').val(quantity - 1);
+			}
+		});
+
+	});
+</script>

@@ -1,40 +1,42 @@
-
- {{>admin-header}}
+{{>admin-header}}
 
 <div class="hero-wrap hero-bread" style="background-image: url('/images/bg_1.jpg');">
-		<div class="container">
-			<div class="row no-gutters slider-text align-items-center justify-content-center">
-				<div class="col-md-9 ftco-animate text-center">
-					<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Checkout</span>
-					</p>
-					<h1 class="mb-0 bread">Coupon List</h1>
-				</div>
-			</div>
-		</div>
-	</div>
-{{!--  --}}
-<div class="container">
-    <div class="row">   
-{{#each couponList}}
-<div class="col-lg-3 d-flex" style="justify-content: space-between;">
-<div class="card mt-3  mb-4" style="width: 18rem;background-color: rgb(174, 163, 196);">
-  <div class="card-body">
-    <a href="/admin/edit-coupon/{{_id}}" style="color:rgb(255, 255, 255)"><i class="fa-solid fa-pencil"></i></a>
-    <a href="/admin/remove-coupon/{{_id}}" onclick="return confirm('Are you sure you want to delete this coupon?');"><p style="float: right;color:rgb(255, 255, 255)"><i class="fa-solid fa-trash"></i></p></a>
-    <h5 class="card-title pt-1">{{coupon}}</h5>
-    <p class="card-text">Expiry Date : {{expiryDate}}</p>
-    <p class="card-text">Minimum Items : {{minItems}}</p>
-    <p class="card-text">Minimum Amount : {{minAmount}}</p>
-    <p class="card-text">Discount Type : {{discountType}}</p>
-    {{#if (eq discountType "percentage")}}
-    <p class="card-text">Discount  : {{discount}}%</p>
-    {{else}}
-    <p class="card-text">Discount  : Rs.{{discount}}</p>
-    {{/if}}
-    {{!-- <a href="#" class="btn btn-primary">Submit</a> --}}
+  <div class="container">
+    <div class="row no-gutters slider-text align-items-center justify-content-center">
+      <div class="col-md-9 ftco-animate text-center">
+        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Checkout</span>
+        </p>
+        <h1 class="mb-0 bread">Coupon List</h1>
+      </div>
+    </div>
   </div>
 </div>
-</div>
-{{/each}}
-</div>
+
+<div class="container">
+  <div class="row">
+    {{#each couponList}}
+    <div class="col-lg-3 d-flex" style="justify-content: space-between;">
+      <div class="card mt-3  mb-4" style="width: 18rem;background-color: rgb(174, 163, 196);">
+        <div class="card-body">
+          <a href="/admin/edit-coupon/{{_id}}" style="color:rgb(255, 255, 255)"><i class="fa-solid fa-pencil"></i></a>
+          <a href="/admin/remove-coupon/{{_id}}"
+            onclick="return confirm('Are you sure you want to delete this coupon?');">
+            <p style="float: right;color:rgb(255, 255, 255)"><i class="fa-solid fa-trash"></i></p>
+          </a>
+          <h5 class="card-title pt-1">{{coupon}}</h5>
+          <p class="card-text">Expiry Date : {{expiryDate}}</p>
+          <p class="card-text">Minimum Items : {{minItems}}</p>
+          <p class="card-text">Minimum Amount : {{minAmount}}</p>
+          <p class="card-text">Discount Type : {{discountType}}</p>
+          {{#if (eq discountType "percentage")}}
+          <p class="card-text">Discount : {{discount}}%</p>
+          {{else}}
+          <p class="card-text">Discount : Rs.{{discount}}</p>
+          {{/if}}
+
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
 </div>

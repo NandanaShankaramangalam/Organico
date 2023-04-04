@@ -1,100 +1,71 @@
-
 {{>admin-header}}
 
- {{!-- Start --}}
- <div class="container mt-5 mb-4">
- <h2 class="text-center">CATEGORY MANAGEMENT</h2>
+<div class="container mt-5 mb-4">
+  <h2 class="text-center">CATEGORY MANAGEMENT</h2>
 </div>
 <div>
   <p class="text-danger text-center">{{errMsg}}</p>
 </div>
- {{#if editCategoryData}}
+{{#if editCategoryData}}
 <div class="container mt-3" style="display: flex; align-items: center;justify-content: center;">
-  <form method="post" action="/admin/edit-category/{{editCategoryData._id}}" class="d-flex " style="justify-content: center;align-items: center;">
-  <input type="text" name="category" id="category" value="{{editCategoryData.category}}" placeholder="Enter category" class="form-control form-control-lg" style="border-style:solid ; border-color:#82AE46; width:50vw;">
-
-  {{!-- {{#if editCategoryData.category}} --}}
-  {{!-- <input class="ms-2 mt-2" type="submit"style="background-color:#82AE46;  border-radius:7px; color:white; float:right;border:none; height:40px;" value="Update Product"> --}}
-  {{!-- {{else}} --}}
-  <input class="ms-2 mt-2" type="submit"style="background-color:#82AE46;  border-radius:7px; color:white; float:right;border:none; height:40px;" value="Edit Category">
-  {{!-- {{/if}} --}}
+  <form method="post" action="/admin/edit-category/{{editCategoryData._id}}" class="d-flex "
+    style="justify-content: center;align-items: center;">
+    <input type="text" name="category" id="category" value="{{editCategoryData.category}}" placeholder="Enter category"
+      class="form-control form-control-lg" style="border-style:solid ; border-color:#82AE46; width:50vw;">
+    <input class="ms-2 mt-2" type="submit"
+      style="background-color:#82AE46;  border-radius:7px; color:white; float:right;border:none; height:40px;"
+      value="Edit Category">
   </form>
 </div>
- {{else}}
+{{else}}
 <div class="container mt-3" style="display: flex; align-items: center;justify-content: center;">
   <form method="post" action="/admin/add-category" class="d-flex " style="justify-content: center;align-items: center;">
-  <input type="text" name="category" id="category"  placeholder="Enter category" class="form-control form-control-lg" style="border-style:solid ; border-color:#82AE46; width:50vw;">
-
-  {{!-- {{#if editCategoryData.category}} --}}
-  <input class="ms-2 mt-2" type="submit"style="background-color:#82AE46;  border-radius:7px; color:white; float:right;border:none; height:40px;" value="Add Category">
-  {{!-- {{else}} --}}
-  {{!-- <input class="ms-2 mt-2" type="submit"style="background-color:#82AE46;  border-radius:7px; color:white; float:right;border:none; height:40px;" value="Edit Product"> --}}
-  {{/if}}
+    <input type="text" name="category" id="category" placeholder="Enter category" class="form-control form-control-lg"
+      style="border-style:solid ; border-color:#82AE46; width:50vw;">
+    <input class="ms-2 mt-2" type="submit"
+      style="background-color:#82AE46;  border-radius:7px; color:white; float:right;border:none; height:40px;"
+      value="Add Category">
+    {{/if}}
   </form>
 </div>
-
-{{!-- <table class="table mt-4" id="myTable">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Sl.No</th>
-      <th scope="col">Category</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each categoryData}}
-    <tr>
-      <td scope="row">{{inc @index}}</td>
-      <td>{{category}}</td>
-      <td>
-      <a class="btn btn-secondary"  href="/admin/edit-category/{{_id}}">Edit</a>
-      {{#if status}}
-      <a class="btn btn-warning" onclick="return confirm('Are you sure you want to unlist {{category}}?')" href="/admin/delete-category/{{_id}}">Unlist</a>
-      {{else}}
-      <a class="btn btn-danger" onclick="return confirm('Are you sure you want to list {{category}}?')" href="/admin/list-category/{{_id}}">List</a>
-      {{/if}}
-      </td>
-    </tr>
-    {{/each}}
-    </tbody>
-</table> --}}
 <div class="container">
-        <div class="row mt-3">
-            <div class="col-12">
-                <div class="table-responsive p-2">
-                    <table class="table table-striped table-bordered" id="example">
-                        <thead>
-                            <tr>
-                                <th>Sl.No</th>
-                                <th>Category</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {{#each categoryData}}
-                            <tr>
-                              <td scope="row">{{inc @index}}</td>
-                              <td>{{category}}</td>
-                              <td>
-                              <a class="btn btn-secondary"  href="/admin/edit-category/{{_id}}">Edit</a>
-                              {{#if status}}
-                              <a class="btn btn-warning" onclick="return confirm('Are you sure you want to unlist {{category}}?')" href="/admin/delete-category/{{_id}}">Unlist</a>
-                              {{else}}
-                              <a class="btn btn-danger" onclick="return confirm('Are you sure you want to list {{category}}?')" href="/admin/list-category/{{_id}}">List</a>
-                              {{/if}}
-                              </td>
-                            </tr>
-                            {{/each}}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+  <div class="row mt-3">
+    <div class="col-12">
+      <div class="table-responsive p-2">
+        <table class="table table-striped table-bordered" id="example">
+          <thead>
+            <tr>
+              <th>Sl.No</th>
+              <th>Category</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each categoryData}}
+            <tr>
+              <td scope="row">{{inc @index}}</td>
+              <td>{{category}}</td>
+              <td>
+                <a class="btn btn-secondary" href="/admin/edit-category/{{_id}}">Edit</a>
+                {{#if status}}
+                <a class="btn btn-warning" onclick="return confirm('Are you sure you want to unlist {{category}}?')"
+                  href="/admin/delete-category/{{_id}}">Unlist</a>
+                {{else}}
+                <a class="btn btn-danger" onclick="return confirm('Are you sure you want to list {{category}}?')"
+                  href="/admin/list-category/{{_id}}">List</a>
+                {{/if}}
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
+</div>
 
 <script>
-  $(document).ready( function () {
+  $(document).ready(function () {
     $('#myTable').DataTable();
-} );
-
+  });
 </script>

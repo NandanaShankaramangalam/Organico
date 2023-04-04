@@ -21,7 +21,7 @@ app.set('view engine', 'hbs');
 app.use(session({secret:"key",saveUninitialized:true,resave:false,cookie:{maxAge:60000*60}}));
 app.use(fileUpload({
   useTempFiles : true,
-  tempFileDir : '/temp/'
+  tempFileDir : __dirname+'/public/temp'
 }));
 
 
