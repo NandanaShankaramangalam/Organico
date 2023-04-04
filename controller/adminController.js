@@ -486,10 +486,7 @@ addCategory : async(req,res,next)=>{
           req.session.errMsg = "Please enter a category!";
             res.redirect('/admin/add-category');
         }
-        // else if(nameRegex.test(categoryInfo.category) != true){
-        //   req.session.errMsg = "Category name invalid!";
-        //     res.redirect('/admin/add-category');
-        // }
+        
         else if(catData){
           if(catData.category){
           req.session.errMsg = "Category name already exist!";
@@ -532,8 +529,27 @@ editCategory : async(req,res,next)=>{
 updateCategory : async(req,res,next)=>{
     try{
     let categoryId = req.params.id;
+    let data = await category.findOne({_id:ObjectId(categoryId)});
+    console.log("oldctdata",data);
     let updateData = req.body;
-    await category.updateOne({_id:ObjectId(categoryId)},{$set:{category:updateData.category}})
+    const reg = new RegExp(updateData.category,"i")
+    catData = await category.findOne({category:{$regex:reg}});
+    if(updateData.category == ''){
+      req.session.errMsg = "Please enter a category!";
+        res.redirect('/admin/add-category');
+    }
+    
+    else if(catData){
+      if(catData.category){
+      req.session.errMsg = "Category name already exist!";
+        res.redirect('/admin/add-category');
+    }
+    }
+    else{
+      await category.updateOne({_id:ObjectId(categoryId)},{$set:{category:updateData.category}});
+      product.updateMany({category:data.category},{$set:{category:updateData.category}});
+    }
+    
     res.redirect('/admin/add-category'); 
     }
     catch(err){
